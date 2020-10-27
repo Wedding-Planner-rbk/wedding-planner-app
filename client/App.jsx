@@ -6,15 +6,16 @@ class App extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            view: 'home'
+            view: 'home',
+            packages: []
         }
     }
 
     componentDidMount() {
-        $.get('/test').then(response => {
-            console.log(response)
+        $.get('/packages').then(results => {
+            console.log(results)
             this.setState({
-                serverTest: response
+                packages: results
             })
         })
     }
@@ -54,6 +55,7 @@ class App extends React.Component {
                 </div>
                 {this.state.view === 'home' ? <div>
                     app description and 3 packages picked from packages database
+
                 </div> 
                 : null}
 
