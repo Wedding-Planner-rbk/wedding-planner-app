@@ -1,7 +1,15 @@
+.body {
+    margin-left: 20px;
+}
 .nav {
-    color: snow;
-    background-color: mediumorchid;
+    color: #FFE484;
+    background-color: #7952B3;
+    font-weight: bold;
+    font-family: 'Carter One';
 }
 .previewImage {
     max-height: 200px;
+}
+.link {
+    cursor: pointer;
 }
