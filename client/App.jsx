@@ -7,7 +7,8 @@ class App extends React.Component {
         super(props)
         this.state = {
             view: 'home',
-            packages: []
+            packages: [],
+            currentPackage: null
         }
     }
 
@@ -36,6 +37,12 @@ class App extends React.Component {
         this.setState({
             view: option
         })
+    }
+    selectPackage(id) {
+        this.setState({
+            currentPackage: id
+        })
+
     }
     render() {
         return (
@@ -72,7 +79,9 @@ class App extends React.Component {
                     <div className="row">
                         {this.state.packages.map(pack => 
                             <div key={pack.id} className="col-sm">
-                            <img src={pack.imageUrl} className="img-thumbnail previewImage"/>
+                            <img src={pack.imageUrl} className="img-thumbnail previewImage" 
+                            onClick={() => {this.changeView('package')
+                                            this.selectPackage(pack.id)}}/>
                             <h4>Type: {pack.name}</h4>
                             <span>Price: {pack.price} DT</span>
                         </div>)}
