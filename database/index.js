@@ -500,10 +500,10 @@ const deleteAllPackages = function (){
   })
 }
 
-const updatePackage = function(hall_id,flowers_id,cakes_id,music_id,id){
+const updatePackage = function(hall_id,flowers_id,cakes_id,music_id,name, description, price, imageUrl, id){
   return new Promise((resolve, reject) =>{
-    const sql = "UPDATE packages SET hall_id = ? flowers_id= ? cakes_id = ? music_id = ?  WHERE id = ? "
-    connection.query(sql,[hall_id,flowers_id,cakes_id,music_id,id],(err,data) => {
+    const sql = "UPDATE packages SET hall_id = ? flowers_id= ? cakes_id = ? music_id = ? name = ? description = ? price = ? imageUrl = ?  WHERE id = ? "
+    connection.query(sql,[hall_id,flowers_id,cakes_id,music_id,name, description, price, imageUrl, id],(err,data) => {
       if(err)
       reject (err)
        else
@@ -512,10 +512,10 @@ const updatePackage = function(hall_id,flowers_id,cakes_id,music_id,id){
   })
 }
 
-const addPackage = function (hall_id,flowers_id,cakes_id,music_id,id){
+const addPackage = function (hall_id,flowers_id,cakes_id,music_id,name, description, price, imageUrl, id){
   return new Promise((resolve, reject) =>{
-    const sql = "INSERT INTO packages (hall_id,flowers_id,cakes_id,music_id) VALUES (?, ?, ?, ?)"
-    connection.query(sql,[name,imageUrl,description,music_id,provider_id],(err,data) =>{
+    const sql = "INSERT INTO packages (hall_id,flowers_id,cakes_id,music_id,name, description, price, imageUrl, id) VALUES (?, ?, ?, ?, ? , ? , ? , ?)"
+    connection.query(sql,[hall_id,flowers_id,cakes_id,music_id,name, description, price, imageUrl, id],(err,data) =>{
       if(err){
         reject(err)
       }
