@@ -130,13 +130,17 @@ INSERT into hall (name, imageUrl, description,hall_id,provider_id) VALUES("High 
   flowers_id INT NOT NULL,
   cakes_id INT NOT NULL,
   music_id INT NOT NULL,
+  name varchar(255) NOT NULL,
+  description varchar(255) NOT NULL,
+  price INT NOT NULL,
+  imageUrl varchar(255) NOT NULL,
      PRIMARY KEY (id)
 );
 
-INSERT into packages (hall_id,flowers_id,cakes_id,music_id) VALUES (33,100,11,22);
+INSERT into packages (hall_id,flowers_id,cakes_id,music_id, name , description, imageUrl) VALUES (33,100,11,22, Basic, "Exchange vows with this intimate, personalized wedding package for two.", 12000 ,"URL" );
 
-INSERT into packages (hall_id,flowers_id,cakes_id,music_id) VALUES (333,200,111,222);
+INSERT into packages (hall_id,flowers_id,cakes_id,music_id, name , description, imageUrl) VALUES (333,200,111,222, Great,"Promise forever with this vow renewal package for 6 guests.",15000,"URL");
 
-INSERT into packages (hall_id,flowers_id,cakes_id,music_id) VALUES (3333,300,1111,2222);
+INSERT into packages (hall_id,flowers_id,cakes_id,music_id, name , description, imageUrl) VALUES (3333,300,1111,2222, Fabulous, "Tie the knot in a romantic Vegas wedding ceremony, with flowers, photos, and limo to chapel.", 20000, "URL");
 
-INSERT into packages (hall_id,flowers_id,cakes_id,music_id) VALUES (33333,400,11111,22222);
+INSERT into packages (hall_id,flowers_id,cakes_id,music_id, name , description, imageUrl) VALUES (33333,400,11111,22222, Premium, "All-inclusive wedding with memorable on-site photo session and upgrades for newlyweds.", 25000, "URL");
