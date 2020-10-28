@@ -1,5 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import AboutUs from './components/AboutUs.jsx';
+import Login from './components/Login.jsx';
+import Packages from './components/Packages.jsx';
+import Products from './components/Products.jsx';
+import Flowers from './components/Flowers.jsx';
+import Cakes from './components/Cakes.jsx';
+import Hall from './components/Hall.jsx';
+import Music from './components/Music.jsx';
 import $ from 'jquery';
 
 class App extends React.Component {
@@ -9,10 +17,15 @@ class App extends React.Component {
             view: 'home',
             packages: [],
             currentPackage: null,
+            selectedFlower: null,
+            selectedCake: null,
+            selectedMusic: null,
+            selectedHall: null,
             budget: 0,
             startWithBudget: false
         }
         this.handleEventOnChange = this.handleEventOnChange.bind(this);
+        this.changeView = this.changeView.bind(this);
     }
 
     componentDidMount() {
@@ -55,8 +68,28 @@ class App extends React.Component {
         this.setState({
             currentPackage: id
         })
-
     }
+    selectFlower(id) {
+        this.setState({
+            selectedFlower: id
+        })
+    }
+    selectCake(id) {
+        this.setState({
+            selectedCake: id
+        })
+    }
+    selectHall(id) {
+        this.setState({
+            selectedHall: id
+        })
+    }
+    selectMusic(id) {
+        this.setState({
+            selectedMusic: id
+        })
+    }
+
     render() {
         return (
             <div>
@@ -114,11 +147,11 @@ class App extends React.Component {
 
                 </div> 
                 : this.state.view === 'packages' ? 
-                <Packages />
+                <Packages changeView = {this.changeView}/>
                 : this.state.view === 'products' ?
-                <Products />
+                <Products changeView = {this.changeView}/>
                 : this.state.view === 'package' ? 
-                <Package />
+                <Package changeView = {this.changeView} id = {}/>
                 : this.state.view === 'cakes' ? 
                 <Cakes />
                 : this.state.view === 'flowers' ? 
