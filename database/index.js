@@ -93,10 +93,10 @@ const deleteAllProvider = function (){
   })
 }
 
-const addUser = function(firstName,lastName,address,zipCode,city,phone,username,email,password){
+const addUser = function(firstName,lastName,address,zipCode,city,phone,username,email,password,flowers_id,cakes_id,music_id,hall_id){
   return new Promise((resolve, reject) =>{
-    const sql = "INSERT INTO users (firstName,lastName,address,zipCode,city,phone,username,email,password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
-    connection.query(sql,[firstName,lastName,address,zipCode,city,phone,username,email,password],(err,data) =>{
+    const sql = "INSERT INTO users (firstName,lastName,address,zipCode,city,phone,username,email,password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,? ,? ,? ,?)"
+    connection.query(sql,[firstName,lastName,address,zipCode,city,phone,username,email,password,flowers_id,cakes_id,music_id,hall_id],(err,data) =>{
       if(err)
       reject(err)
       else
@@ -156,10 +156,10 @@ const updateProvider = function (firstName,speciality,username,email,password,pr
 }
 
 
-const updateUsers = function(firstName,lastName,address,zipCode,city,phone,username,email,password,id){
+const updateUsers = function(firstName,lastName,address,zipCode,city,phone,username,email,password,flowers_id,cakes_id,music_id,hall_id){
   return new Promise((resolve, reject) =>{
-    const sql = "UPDATE users SET firstname = ? lastname= ? address = ? zipCode = ? city = ? phone = ? username = ? email = ? password = ? WHERE id = ? "
-    connection.query(sql,[firstName,lastName,address,zipCode,city,phone,username,email,password,id],(err,data) => {
+    const sql = "UPDATE users SET firstname = ? lastname= ? address = ? zipCode = ? city = ? phone = ? username = ? email = ? password = ? flowers_id = ? cakes_id = ? music_id  ? hall_id = ?  WHERE id = ? "
+    connection.query(sql,[firstName,lastName,address,zipCode,city,phone,username,email,password,flowers_id,cakes_id,music_id,hall_id,id],(err,data) => {
       if(err)
       reject (err)
        else
