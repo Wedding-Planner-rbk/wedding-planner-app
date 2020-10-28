@@ -15,14 +15,23 @@ CREATE TABLE users (
   username varchar(255) NOT NULL,
   email varchar (255) NOT NULL,
   password varchar(255) NOT NULL,
+  flowers_id INT NULL,
+  cakes_id INT NULL,
+  music_id INT NULL,
+  hall_id INT NULL,
   PRIMARY KEY (id)
 );
 
-INSERT into users ( firstName, lastName, address, zipCode, city, phone, username,email, password) VALUES ("Haykel","Hadj Salem", "Sousse", 2002,"Khzema",22555666,"Hayha","12345");
-INSERT into users ( firstName, lastName, address, zipCode, city, phone, username,email, password) VALUES ("Nadim","Barkati", "Tunis", 2001,"Bardo",20555666,"Naba","123456");
-INSERT into users ( firstName, lastName, address, zipCode, city, phone, username,email, password) VALUES ("Chayma","Ben Thabet", "Nabeul", 2003,"Mrezga",23564789,"Chabe","25014");
-INSERT into users ( firstName, lastName, address, zipCode, city, phone, username,email, password) VALUES ("Dhia","Fattoum", "Gafsa", 2005,"Ville",24589647,"Dhifa","20546");
-INSERT into users ( firstName, lastName, address, zipCode, city, phone, username,email, password) VALUES ("Issam","Ben Mansour", "Sfax", 2004,"Gremda",20145365,"Isbe","25631");
+INSERT into users ( firstName, lastName, address, zipCode, city, phone, username,email, password, flowers_id,cakes_id,music_id,hall_id) VALUES ("Haykel","Hadj Salem", "Sousse", 2002,"Khzema",22555666,"Hayha","12345",NULL,NULL,NULL,NULL);
+INSERT into users ( firstName, lastName, address, zipCode, city, phone, username,email, password, flowers_id,cakes_id,music_id,hall_id) VALUES ("Nadim","Barkati", "Tunis", 2001,"Bardo",20555666,"Naba","123456",NULL,NULL,NULL,NULL);
+INSERT into users ( firstName, lastName, address, zipCode, city, phone, username,email, password, flowers_id,cakes_id,music_id,hall_id) VALUES ("Chayma","Ben Thabet", "Nabeul", 2003,"Mrezga",23564789,"Chabe","25014",NULL,NULL,NULL,NULL);
+INSERT into users ( firstName, lastName, address, zipCode, city, phone, username,email, password, flowers_id,cakes_id,music_id,hall_id) VALUES ("Dhia","Fattoum", "Gafsa", 2005,"Ville",24589647,"Dhifa","20546",NULL,NULL,NULL,NULL);
+INSERT into users ( firstName, lastName, address, zipCode, city, phone, username,email, password, flowers_id,cakes_id,music_id,hall_id) VALUES ("Issam","Ben Mansour", "Sfax", 2004,"Gremda",20145365,"Isbe","25631",NULL,NULL,NULL,NULL);
+INSERT into users ( firstName, lastName, address, zipCode, city, phone, username,email, password, flowers_id,cakes_id,music_id,hall_id) VALUES ("Hanen","loulou", "Gabes", 2022,"Hamma",23145678,"halou","12345678",NULL,NULL,NULL,NULL);
+INSERT into users ( firstName, lastName, address, zipCode, city, phone, username,email, password, flowers_id,cakes_id,music_id,hall_id) VALUES ("Alex","Khbou", "Sfax", 2021,"Afrane",89654122,"Akh","3456789",NULL,NULL,NULL,NULL);
+INSERT into users ( firstName, lastName, address, zipCode, city, phone, username,email, password, flowers_id,cakes_id,music_id,hall_id) VALUES ("Larissa","Bellucci", "Italia", 30125,"Milano",21365478,"Labe","0231456",NULL,NULL,NULL,NULL);
+INSERT into users ( firstName, lastName, address, zipCode, city, phone, username,email, password, flowers_id,cakes_id,music_id,hall_id) VALUES ("Dhia","Mbarki", "Mhamdia", 3014,"Village",89541200,"Dhmb","3654789",NULL,NULL,NULL,NULL);
+INSERT into users ( firstName, lastName, address, zipCode, city, phone, username,email, password, flowers_id,cakes_id,music_id,hall_id) VALUES ("Nesrine","Abid", "Ariana", 2004,"Sokra",97485632,"Neb","6987452",NULL,NULL,NULL,NULL);
 
 
  CREATE TABLE provider (
