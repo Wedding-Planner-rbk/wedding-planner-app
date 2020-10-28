@@ -1,6 +1,6 @@
 import React from "react";
 import $ from "jquery";
-import Packageitem from "./Packageitem";
+import Packageitem from "./Packageitem.jsx";
 
 class Packages extends React.Component {
   constructor(props) {

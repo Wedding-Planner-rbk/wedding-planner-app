@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class Packageitem extends Component {
+ class Packageitem extends Component {
     render() {
         return (
             <div>
