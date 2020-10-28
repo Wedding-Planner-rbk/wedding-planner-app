@@ -6,7 +6,7 @@ export default class Packageitem extends Component {
             <div>
                 <li>
                 <h1>{package.name}</h1>
-                <img>{package.imageurl}</img>
+                <img onClick={() => this.changeView('Package')}>{package.imageurl}</img>
                 <p>{package.description}</p>
                 <p>{package.price}</p>
               </li>
