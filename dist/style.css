@@ -1,3 +1,7 @@
-body {
-    color: darkblue;
+.nav {
+    color: snow;
+    background-color: mediumorchid;
+}
+.previewImage {
+    max-height: 200px;
 }
