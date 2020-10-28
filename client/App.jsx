@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import AboutUs from './components/AboutUs.jsx';
 import Login from './components/Login.jsx';
 import Packages from './components/Packages.jsx';
+import Pack from './components/Pack.jsx';
 import Products from './components/Products.jsx';
 import Flowers from './components/Flowers.jsx';
 import Cakes from './components/Cakes.jsx';
@@ -29,7 +30,7 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        // $.get('/packages').then(results => {
+        // $.get('/pakages').then(results => {
         //     console.log(results)
         //     var first = Math.floor(Math.random() * results.length);
         //     do {
@@ -64,29 +65,29 @@ class App extends React.Component {
             view: option
         })
     }
-    selectPackage(id) {
+    selectPackage(pack) {
         this.setState({
-            currentPackage: id
+            currentPackage: pack
         })
     }
-    selectFlower(id) {
+    selectFlower(flower) {
         this.setState({
-            selectedFlower: id
+            selectedFlower: flower
         })
     }
-    selectCake(id) {
+    selectCake(cake) {
         this.setState({
-            selectedCake: id
+            selectedCake: cake
         })
     }
-    selectHall(id) {
+    selectHall(hall) {
         this.setState({
-            selectedHall: id
+            selectedHall: hall
         })
     }
-    selectMusic(id) {
+    selectMusic(music) {
         this.setState({
-            selectedMusic: id
+            selectedMusic: music
         })
     }
 
@@ -151,7 +152,7 @@ class App extends React.Component {
                 : this.state.view === 'products' ?
                 <Products changeView = {this.changeView}/>
                 : this.state.view === 'package' ? 
-                <Package changeView = {this.changeView} />
+                <Pack changeView = {this.changeView} />
                 : this.state.view === 'cakes' ? 
                 <Cakes />
                 : this.state.view === 'flowers' ? 
