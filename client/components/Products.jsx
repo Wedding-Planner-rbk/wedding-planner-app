@@ -6,32 +6,22 @@ class Products extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-         pictures: images,
-         view : "",
-         id:0
+         products: images,
         }
         this.changeView = this.changeView.bind(this);
     }
     
-    componentDidMount() {
-        $.get('/products').then(results => {
-            console.log(results)
-            this.setState({
-                pictures:results.data,
-            })
-        })
-    }
-    changeView(e,id) {
-        e.preventDefault()
-        this.setState({
-            view:"image",
-            id:id
-        })
-    }
+    // componentDidMount() {
+    //     $.get('/products').then(results => {
+    //         console.log(results)
+    //         this.setState({
+    //             products:results.data,
+    //         })
+    //     })
+    // }
     
     
     render() { 
-        if(this.state.view ==="" ){
             return (
                 
                 <div className="container">
@@ -40,10 +30,10 @@ class Products extends React.Component {
                 The professionals at The Velvet Box are experts at creating the ultimate wedding.we can let you choose what do you need of ourproducts like Flowers , Wedding hull , Music band , Wedding Cakes  </p>
                     <h2>All Products</h2>
                 <div className="row">
-                    {this.state.pictures.map(image => (
-                     <div key={image.id} className="col-sm">
-                    <Image key={image.id} src={image.img} className="img-thumbnail previewImage" onClick={(e)=>this.changeView(e,image.id)} />
-                    <h4> {pictures.name}</h4>
+                    {this.state.products.map(product => (
+                     <div key={product.id} className="col-sm">
+                    <Image key={product.id} src={product.img} className="img-thumbnail previewImage" onClick={()=>this.props.changeView(product.name)} />
+                    <h4> {product.name}</h4>
                     </div>
              ))}
                     </div>
@@ -51,14 +41,7 @@ class Products extends React.Component {
                      </div>     
             )
             
-        }   else{
-            return (
-                <div>
-<RenderImage idImage={this.state.id}/>
-                </div>
-            )
-        } 
-    }
+        }  
     
     }
     export default Products ;
