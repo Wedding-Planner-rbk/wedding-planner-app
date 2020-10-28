@@ -25,7 +25,7 @@ class flowers extends Component {
                 <div className="row">
                  {this.state.bouquets.map(bouquet => (
                      <div key={bouquet.id} className="col-sm">
-                     <Image key={bouquet.id} src={bouquet.img} className="img-thumbnail previewImage" onClick={()=>this.props.changeView(bouquet.name)} />
+                     <Image key={bouquet.id} src={bouquet.img} className="img-thumbnail previewImage" onClick={()=>this.props.selectFlowers(bouquet.name)} />
                 </div>
                     ))}
                 </div>
