@@ -1,3 +1,4 @@
+const { response } = require('express');
 var db = require('../database/index');
 
 exports.getAllServices = (req, res) => {
@@ -8,99 +9,56 @@ exports.getAllServices = (req, res) => {
 }
 
 exports.getAllPackages =(req, res)=>{
-    var results = req.body.packages;
-       getAllPackages(results, function(data) {
-    })
-    res.end('')
+       getAllPackages().then(data => {res.status(200).json(data) })
+        .catch(error => res.status(500).send(error))
+   
 }
     
 exports.findOnePackage=(req,res)=>{
    var package_id = req.body.id;
    var package =[]
 
-    findSpecificPackage(package_id, function(data) {
-       console.log('package found')
+   selectPackage(package_id).then(data=> {
 
-    findSpecificFlower(data.id_flower, function(err,data){
-       if (err) {
-          res.status(500).send("does not exists");
-       } else {
-          package.push(data)
-       } 
-    })
+     selectFlower(data.id_flower).then(flower=> package.push(flower))
+     selectCake(data.id_cake).then(cake => package.push(cake))
+     selectHall(data.id_hall).then( hall => package.push(hall))
+     selectMusic(data.id_Band).then(music => package.push(music))
 
-    findSpecificWeddingCake(data.id_cake, function(err,data){
-       if (err) {
-           res.status(500).send("does not exists");
-        } else {
-        package.push(data)
-        }
-    })
 
-    findSpecificWeddingHall(data.id_hall, function(err,data){
-        if (err) {
-              res.status(500).send("does not exists");
-        } else {
-            package.push(data)
-        }
-    })
-
-    findSpecificMusicBand(data.id_Band, function(err,data){
-       if (err) {
-          res.status(500).send("does not exists");
-        } else {
-           package.push(data)
-        }
-    })
-
-    res.status(200).send(package)
- 
+    res.status(200).json({package,data})
+    
    })
+    .catch(error => res.status(500).send(error))  
 
-res.end('')
 }
   
 
 
 
 exports.findUser= (req, res) => {
-    console.log(req.body);
-    user=req.body.userName
-    findUser(user,function(err,data) {
-      if (err) {
-        res.status(500).send("does not exists");
-      } else {
-        res.status(200).send(data);
-      }
-    });
+  selectUser(req.body.id).then((user) => {
+    if (user === null) {
+      res.send("does not exists");
+    } else {
+      res.send(user);
+    }
+  });
 }
 
-exports.findProvider= (req, res) => {
-    console.log(req.body);
-    provider=req.body.providerName
-    findProvider(provider,function(err,data) {
-      if (err) {
-        res.status(500).send("does not exists");
-      } else {
-        res.status(200).send(data);
-      }
-    });
+
+exports.findProvider = (req, res) => {
+  selectProvider(req.body).then(provider => {
+    if (provider === null) {
+      res.send("does not exists");
+    } else {
+      res.send(user);
+    }
+  
+  });
+  
+
 }
-exports.addUser=(req, res) => {
-    let NewUser = req.body;
-    addUser(NewUser , function(err,data){
-        if (err) {
-            res.status(500).send("does not exists");
-          } else {  
-      str = JSON.stringify(NewUser);
-      res.send(str);
-          }
-    });
-  };
+        
+  
 
-  exports.Authentification=(req,res)=>{
-    var username = req.body.username;
-	var password = req.body.password;
-	if (username && password) {
-
-  }
