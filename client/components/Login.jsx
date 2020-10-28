@@ -1,4 +1,5 @@
 import React from 'react';
-class extends React.Component {
+class Login extends React.Component {
     
 }
+export default Login;
