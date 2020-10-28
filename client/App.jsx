@@ -17,12 +17,13 @@ class App extends React.Component {
         this.state = {
             view: 'home',
             packages: [],
-            currentPackage: null,
-            selectedFlower: null,
-            selectedCake: null,
-            selectedMusic: null,
-            selectedHall: null,
+            currentPackage: {},
+            selectedFlower: {},
+            selectedCake: {},
+            selectedMusic: {},
+            selectedHall: {},
             budget: 0,
+            price: 0,
             startWithBudget: false
         }
         this.handleEventOnChange = this.handleEventOnChange.bind(this);
@@ -74,21 +75,41 @@ class App extends React.Component {
         this.setState({
             selectedFlower: flower
         })
+        if(this.state.startWithBudget) {
+            this.setState(prevState => ({
+                price: prevState.price + flower.price
+            }))
+        }
     }
     selectCake(cake) {
         this.setState({
             selectedCake: cake
         })
+        if(this.state.startWithBudget) {
+            this.setState(prevState => ({
+                price: prevState.price + cake.price
+            }))
+        }
     }
     selectHall(hall) {
         this.setState({
             selectedHall: hall
         })
+        if(this.state.startWithBudget) {
+            this.setState(prevState => ({
+                price: prevState.price + hall.price
+            }))
+        }
     }
     selectMusic(music) {
         this.setState({
             selectedMusic: music
         })
+        if(this.state.startWithBudget) {
+            this.setState(prevState => ({
+                price: prevState.price + music.price
+            }))
+        }
     }
 
     render() {
