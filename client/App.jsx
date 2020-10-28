@@ -86,7 +86,8 @@ class App extends React.Component {
                     </div>
                     
                 </div>
-                {this.state.view === 'home' ? <div className='body'>
+                <div className='body'>
+                {this.state.view === 'home' ? <div>
                     <p>app description</p>
                     <div className='col-5'>
                         <div className="input-group mb-3">
@@ -112,9 +113,27 @@ class App extends React.Component {
                     </div>
 
                 </div> 
-                : null}
+                : this.state.view === 'packages' ? 
+                <Packages />
+                : this.state.view === 'products' ?
+                <Products />
+                : this.state.view === 'package' ? 
+                <Package />
+                : this.state.view === 'cakes' ? 
+                <Cakes />
+                : this.state.view === 'flowers' ? 
+                <Flowers />
+                : this.state.view === 'hall' ? 
+                <Hall />
+                : this.state.view === 'music' ? 
+                <Music />
+                : this.state.view === 'login' ? 
+                <Login />
+                : this.state.view === 'aboutUs' ? 
+                <AboutUs />
+                :null}
 
-
+                </div>
             </div>
         )
     }
