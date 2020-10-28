@@ -43,6 +43,6 @@
     "react": "^15.7.0",
     "react-dom": "^15.7.0",
     "save": "^2.4.0",
-    "sequelize": "^6.3.5"
+    "sequelize": "^5.22.3"
   }
 }
