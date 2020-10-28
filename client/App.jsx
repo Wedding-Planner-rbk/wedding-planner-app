@@ -151,7 +151,7 @@ class App extends React.Component {
                 : this.state.view === 'products' ?
                 <Products changeView = {this.changeView}/>
                 : this.state.view === 'package' ? 
-                <Package changeView = {this.changeView} id = {}/>
+                <Package changeView = {this.changeView} />
                 : this.state.view === 'cakes' ? 
                 <Cakes />
                 : this.state.view === 'flowers' ? 
