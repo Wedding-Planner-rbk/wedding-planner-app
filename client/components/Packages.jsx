@@ -23,8 +23,8 @@ class Packages extends React.Component {
       <div>
         <h1>packages</h1>
         <ul>
-          {this.state.packages.map((package,index) => {
-            return <Packageitem key={index} package={package}/>
+          {this.state.packages.map((pack,index) => {
+            return <Packageitem key={index} pack={pack}/>
             ;
           })}
         </ul>

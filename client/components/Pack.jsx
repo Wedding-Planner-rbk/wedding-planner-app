@@ -1,18 +1,18 @@
 import React from "react";
 import $ from "jquery";
 
-class Package extends React.Component {
+class Pack extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        package: [],
+        pack: [],
       };
     }
   
     componentDidMount() {
       $.post("/packages").then((result) => {
         this.setState({
-          package: result,
+          pack: result,
           id : id 
         });
       });
@@ -21,10 +21,10 @@ class Package extends React.Component {
     render() {
         return (
           <div>
-            <h1>package</h1>
+            <h1>pack</h1>
             <ul>
-              {this.state.package.map((package,id) => {
-                return <Package key={package.id} package={package}/>
+              {this.state.pack.map((pack,id) => {
+                return <Pac key={pack.id} pack={pack}/>
                 ;
               })}
             </ul>
@@ -34,4 +34,4 @@ class Package extends React.Component {
     }
     
     
-    export default Package;
+    export default Pack;

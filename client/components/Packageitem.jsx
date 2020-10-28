@@ -5,10 +5,10 @@ export default class Packageitem extends Component {
         return (
             <div>
                 <li>
-                <h1>{package.name}</h1>
-                <img onClick={() => this.changeView('Package')}>{package.imageurl}</img>
-                <p>{package.description}</p>
-                <p>{package.price}</p>
+                <h1>{pack.name}</h1>
+                <img onClick={() => this.changeView('Pack')}>{pack.imageurl}</img>
+                <p>{pack.description}</p>
+                <p>{pack.price}</p>
               </li>
             </div>
         )
