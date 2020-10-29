@@ -9,7 +9,7 @@ const bodyParser = require('body-parser');
 //load passport strategies
 //require('./app/config/passport/passport.js')(passport, models.user);
 //const authController = require('./authcontrollers');
-const {getAllPackages ,getAllServices ,findOnePackage ,findUser ,findProvider}= require('./controllers')
+const {getAllPackages ,getAllMusic ,findOnePackage ,findUser ,findProvider, getAllFlowers, getAllCakes, getAllhalls}= require('./controllers')
 const PORT = 3000;
 
 // For Passport
@@ -36,7 +36,10 @@ app.get('/test', (req, res) => {
     res.status(200).send('Testing app')
 })
 app.get("/pakages", getAllPackages);
-app.get("/services", getAllServices);
+app.get("/flowers", getAllFlowers);
+app.get("/music", getAllMusic);
+app.get("/hall", getAllhalls);
+app.get("/cakes", getAllCakes);
 app.post("/package",findOnePackage);
 app.post("/login/user" ,findUser);
 app.post("/login/provider" ,findProvider);

@@ -31,25 +31,25 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        // $.get('/pakages').then(results => {
-        //     console.log(results)
-        //     var first = Math.floor(Math.random() * results.length);
-        //     do {
-        //         var second = Math.floor(Math.random() * results.length);
-        //     } while(second === first)
-        //     do {
-        //         var third = Math.floor(Math.random() * results.length);
-        //     } while(third === first || third === second)
-        //     this.setState(prevState => ({
-        //         packages: prevState.packages.concat(results[first], results[second], results[third])
-        //     }))
-        // })
-        var packages = [{id:0, name: 'Basic', price: 8000, imageUrl: 'https://bbc136b7ae3badc49324-4505d403f77dee961d206e5b048c01ea.ssl.cf3.rackcdn.com/SeDireOui/web/modele-business-plan-wedding-planner-thumb.jpg'},
-        {id: 1, name: 'Simple', price: 10000, imageUrl: 'https://www.mariage.com/wp-content/uploads/2016/04/une-mariage-papiers.jpg'},
-        {id: 2, name: 'Romantic', price: 12000, imageUrl: 'https://www.mariage.com/wp-content/uploads/2016/02/une-mariage-romantique.jpg'}];
-        this.setState({
-            packages
+        $.get('/pakages').then(results => {
+            console.log(results)
+            var first = Math.floor(Math.random() * results.length);
+            do {
+                var second = Math.floor(Math.random() * results.length);
+            } while(second === first)
+            do {
+                var third = Math.floor(Math.random() * results.length);
+            } while(third === first || third === second)
+            this.setState(prevState => ({
+                packages: prevState.packages.concat(results[first], results[second], results[third])
+            }))
         })
+        // var packages = [{id:0, name: 'Basic', price: 8000, imageUrl: 'https://bbc136b7ae3badc49324-4505d403f77dee961d206e5b048c01ea.ssl.cf3.rackcdn.com/SeDireOui/web/modele-business-plan-wedding-planner-thumb.jpg'},
+        // {id: 1, name: 'Simple', price: 10000, imageUrl: 'https://www.mariage.com/wp-content/uploads/2016/04/une-mariage-papiers.jpg'},
+        // {id: 2, name: 'Romantic', price: 12000, imageUrl: 'https://www.mariage.com/wp-content/uploads/2016/02/une-mariage-romantique.jpg'}];
+        // this.setState({
+        //     packages
+        // })
     }
     handleEventOnChange(e) {
         this.setState({
@@ -158,7 +158,7 @@ class App extends React.Component {
                     <div className="row">
                         {this.state.packages.map(pack => 
                             <div key={pack.id} className="col-sm">
-                            <img src={pack.imageUrl} className="img-thumbnail previewImage" 
+                            <img src={pack.image_url} className="img-thumbnail previewImage" 
                             onClick={() => {this.changeView('package')
                                             this.selectPackage(pack.id)}}/>
                             <h4>Type: {pack.name}</h4>
