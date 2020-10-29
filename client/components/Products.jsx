@@ -1,12 +1,12 @@
 import React from 'react';
 import $ from 'jquery';
-import images from "./sample-data.js"
+import products from "./sample-data.js"
 
 class Products extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-         products: images,
+         products: products,
         }
     }
     
