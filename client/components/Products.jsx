@@ -8,7 +8,6 @@ class Products extends React.Component {
         this.state = {
          products: images,
         }
-        this.changeView = this.changeView.bind(this);
     }
     
     // componentDidMount() {
@@ -32,7 +31,7 @@ class Products extends React.Component {
                 <div className="row">
                     {this.state.products.map(product => (
                      <div key={product.id} className="col-sm">
-                    <Image key={product.id} src={product.img} className="img-thumbnail previewImage" onClick={()=>this.props.changeView(product.name)} />
+                    <img key={product.id} src={product.img} className="img-thumbnail previewImage" onClick={()=>this.props.changeView(product.name)} />
                     <h4> {product.name}</h4>
                     </div>
              ))}
