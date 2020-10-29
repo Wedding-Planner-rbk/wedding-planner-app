@@ -1,6 +1,8 @@
-module.exports = function(sequelize, Sequelize) {
- 
-    var User = sequelize.define('user', {
+
+const sequelize = require('./index');
+const { Sequelize } = require('sequelize');
+
+    const User = sequelize.define('user', {
  
         id: {
             autoIncrement: true,
@@ -46,10 +48,7 @@ module.exports = function(sequelize, Sequelize) {
             type: Sequelize.ENUM('active', 'inactive'),
             defaultValue: 'active'
         }
- 
- 
     });
- 
-    return User;
- 
-}
+
+    sequelize.sync();
+    exports = User;

@@ -1,5 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import AboutUs from './components/AboutUs.jsx';
+import Login from './components/Login.jsx';
+import Packages from './components/Packages.jsx';
+import Products from './components/Products.jsx';
+import Flowers from './components/Flowers.jsx';
+import Cakes from './components/Cakes.jsx';
+import Hall from './components/Hall.jsx';
+import Music from './components/Music.jsx';
 import $ from 'jquery';
 
 class App extends React.Component {
@@ -8,8 +16,16 @@ class App extends React.Component {
         this.state = {
             view: 'home',
             packages: [],
-            currentPackage: null
+            currentPackage: null,
+            selectedFlower: null,
+            selectedCake: null,
+            selectedMusic: null,
+            selectedHall: null,
+            budget: 0,
+            startWithBudget: false
         }
+        this.handleEventOnChange = this.handleEventOnChange.bind(this);
+        this.changeView = this.changeView.bind(this);
     }
 
     componentDidMount() {
@@ -33,6 +49,16 @@ class App extends React.Component {
             packages
         })
     }
+    handleEventOnChange(e) {
+        this.setState({
+            budget: e.target.value
+        })
+    }
+    handleEventOnClick() {
+        this.setState({
+            startWithBudget: true
+        })
+    }
     changeView(option) {
         this.setState({
             view: option
@@ -42,39 +68,70 @@ class App extends React.Component {
         this.setState({
             currentPackage: id
         })
-
     }
+    selectFlower(id) {
+        this.setState({
+            selectedFlower: id
+        })
+    }
+    selectCake(id) {
+        this.setState({
+            selectedCake: id
+        })
+    }
+    selectHall(id) {
+        this.setState({
+            selectedHall: id
+        })
+    }
+    selectMusic(id) {
+        this.setState({
+            selectedMusic: id
+        })
+    }
+
     render() {
         return (
             <div>
                 <div className="navbar navbar-light nav">
                     <div className= "container-fluid">
-                        <span className="navbar-brand text-white">The Velvet Box</span>
-                    <span className='nav-item'
+                    <span className="navbar-brand" style={{color: '#FFE484'}}>The Velvet Box</span>
+                    <span className='nav-item link'
                     onClick={() => this.changeView('home')}>
                         Home
                     </span>
-                    <span className='nav-item'
+                    <span className='nav-item link'
                     onClick={() => this.changeView('packages')}>
                         Packages
                     </span>
-                    <span className='nav-item'
+                    <span className='nav-item link'
                     onClick={() => this.changeView('products')}>
                         Products
                     </span>
-                    <span className='nav-item'
+                    <span className='nav-item link'
                     onClick={() => this.changeView('aboutUs')}>
                         About Us
                     </span>
-                    <span className='nav-item'
+                    <span className='nav-item link'
                     onClick={() => this.changeView('login')}>
                         Log in
                     </span>
                     </div>
                     
                 </div>
+                <div className='body'>
                 {this.state.view === 'home' ? <div>
-                    app description and 3 packages picked from packages database
+                    <p>app description</p>
+                    <div className='col-5'>
+                        <div className="input-group mb-3">
+                            <input type="number" className="form-control" placeholder="If you want to start with a fixed Budget, enter yours"
+                                min='0' onChange={this.handleEventOnChange}/>
+                            <button className="btn btn-outline-secondary" onClick={() => {this.handleEventOnClick()
+                                                                                            this.changeView('products')
+                            }}>Confirm</button>
+                        </div>
+                    </div>
+                    
                     <div className="container">
                     <div className="row">
                         {this.state.packages.map(pack => 
@@ -89,9 +146,27 @@ class App extends React.Component {
                     </div>
 
                 </div> 
-                : null}
+                : this.state.view === 'packages' ? 
+                <Packages changeView = {this.changeView}/>
+                : this.state.view === 'products' ?
+                <Products changeView = {this.changeView}/>
+                : this.state.view === 'package' ? 
+                <Package changeView = {this.changeView} />
+                : this.state.view === 'cakes' ? 
+                <Cakes />
+                : this.state.view === 'flowers' ? 
+                <Flowers />
+                : this.state.view === 'hall' ? 
+                <Hall />
+                : this.state.view === 'music' ? 
+                <Music />
+                : this.state.view === 'login' ? 
+                <Login />
+                : this.state.view === 'aboutUs' ? 
+                <AboutUs />
+                :null}
 
-
+                </div>
             </div>
         )
     }

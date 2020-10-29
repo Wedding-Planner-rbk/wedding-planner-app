@@ -1,34 +1,36 @@
 const express = require('express');
+const app = express();  
+//const passport = require('passport')
 const bodyParser = require('body-parser');
-const env = require('dotenv').load();
-const models = require("./app/models");
-const authController = require('./authcontrollers');
-const authRoute = require('../routes/auth')(app);
+//require('dotenv').config({ path: '../.env' });
+//const models = require('../app/models');
+//require('../routes/auth')(app, passport);
+//const session = require('express-session');
 //load passport strategies
-require('./app/config/passport/passport.js')(passport, models.user);
-const {getAllPackages ,getAllServices ,findOnePackage ,findUser ,findProvider,Authentification}= require('./controllers')
-const app = express();
+//require('./app/config/passport/passport.js')(passport, models.user);
+//const authController = require('./authcontrollers');
+const {getAllPackages ,getAllServices ,findOnePackage ,findUser ,findProvider}= require('./controllers')
 const PORT = 3000;
-var session = require('express-session');
+
 // For Passport
  
-app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true})); // session secret
+//app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true})); // session secret
  
-app.use(passport.initialize());
+//app.use(passport.initialize());
  
-app.use(passport.session()); // persistent login sessions
+//app.use(passport.session()); // persistent login sessions
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(express.static(__dirname + '../../dist'));
 //Sync Database
-models.sequelize.sync().then(function() {
- console.log('Nice! Database looks fine')
-}).catch(function(err) {
-  console.log(err, "Something went wrong with the Database Update!")
+//models.sequelize.sync().then(function() {
+ //console.log('Nice! Database looks fine')
+//}).catch(function(err) {
+ //console.log(err, "Something went wrong with the Database Update!")
  
-});
+//});
 
 app.get('/test', (req, res) => {
     res.status(200).send('Testing app')
@@ -43,13 +45,13 @@ app.post("/login/provider" ,findProvider);
 
 
 
-app.post('/signup', passport.authenticate('local-signup', {
-  successRedirect: '/dashboard',
+//app.post('/signup', passport.authenticate('local-signup', {
+ //successRedirect: '/dashboard',
 
-  failureRedirect: '/signup'
-}
+ //failureRedirect: '/signup'
+//}
 
-));
+//));
 app.listen(PORT, () => {
     console.log(`listening on http://localhost:${PORT}`);
   });
