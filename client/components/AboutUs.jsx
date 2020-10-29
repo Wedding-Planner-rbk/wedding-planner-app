@@ -1,4 +1,6 @@
 import React from 'react';
+import SocialFollow from './socialFollow/SocialFollow';
+
 class AboutUs extends React.Component {
     
 
@@ -22,6 +24,8 @@ class AboutUs extends React.Component {
           <div>
             <h4> Contact us</h4>
             <p>Contact Us Whether you have feedback on Wedding Planner, questions about how it works, or need support with your account, we would be delighted to hear from you.  </p>
+            
+            <SocialFollow />
             </div>
           </div>
         )
