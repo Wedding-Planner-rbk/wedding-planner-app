@@ -20,7 +20,8 @@ class Packages extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container" >
+        <div  className="row">
         <h1>packages</h1>
         <ul>
           {this.state.packages.map((pack,index) => {
@@ -28,6 +29,7 @@ class Packages extends React.Component {
             ;
           })}
         </ul>
+        </div>
       </div>
     );
   }

@@ -6,7 +6,7 @@ import React, { Component } from 'react'
             <div>
                 <li>
                 <h1>{pack.name}</h1>
-                <img onClick={() => this.changeView('Pack')}>{pack.imageurl}</img>
+                <img className="img-thumbnail previewImage" onClick={() => this.changeView('Pack')}>{pack.imageurl}</img>
                 <p>{pack.description}</p>
                 <p>{pack.price}</p>
               </li>
