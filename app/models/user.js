@@ -1,6 +1,4 @@
-
-const sequelize = require('./index');
-const { Sequelize } = require('sequelize');
+module.exports = function(sequelize, Sequelize) {
 
     const User = sequelize.define('user', {
  
@@ -49,6 +47,5 @@ const { Sequelize } = require('sequelize');
             defaultValue: 'active'
         }
     });
-
-    sequelize.sync();
-    exports = User;
+    return User;
+}

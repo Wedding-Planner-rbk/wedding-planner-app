@@ -4,7 +4,7 @@ const app = express();
 const bodyParser = require('body-parser');
 //require('dotenv').config({ path: '../.env' });
 //const models = require('../app/models');
-//require('../routes/auth')(app, passport);
+//require('../routes/auth')(app,passport);
 //const session = require('express-session');
 //load passport strategies
 //require('./app/config/passport/passport.js')(passport, models.user);
@@ -44,14 +44,15 @@ app.post("/login/provider" ,findProvider);
 
 
 
+/*
+app.post('/signup', passport.authenticate('local-signup', {
+ successRedirect: '/dashboard',
 
-//app.post('/signup', passport.authenticate('local-signup', {
- //successRedirect: '/dashboard',
+ failureRedirect: '/signup'
+}
 
- //failureRedirect: '/signup'
-//}
-
-//));
+));
+*/
 app.listen(PORT, () => {
     console.log(`listening on http://localhost:${PORT}`);
   });
