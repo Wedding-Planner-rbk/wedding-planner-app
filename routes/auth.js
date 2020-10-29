@@ -1,5 +1,6 @@
 var authController = require('../server/authcontrollers');
- 
+
+
  
 module.exports = function(app, passport) {
  
