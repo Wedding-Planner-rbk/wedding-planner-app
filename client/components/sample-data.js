@@ -2,7 +2,7 @@ let images = [
     {
         id: 1,
         name: 'flowers',
-        imag :"https://cdn0.hitched.co.uk/articles/images/5/6/4/5/img_35465/r10_2x_choose-wedding-flowers-bouquet-thumbnail-75c4c70.jpg" 
+        img :"https://cdn0.hitched.co.uk/articles/images/5/6/4/5/img_35465/r10_2x_choose-wedding-flowers-bouquet-thumbnail-75c4c70.jpg" 
     },
     {
         id:2,
