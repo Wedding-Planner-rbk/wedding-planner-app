@@ -29,7 +29,7 @@ class flowers extends Component {
                      <h3>{bouquet.name}</h3>
                      <p>{bouquet.description}</p>
                      <p>Price : {bouquet.price}</p>
-                     <button className="btn btn-outline-secondary" onClick={()=>{this.props.selectFlower(bouquet.id) 
+                     <button className="btn btn-outline-secondary" onClick={()=>{this.props.selectFlower(bouquet) 
                     this.props.changeView('products')}}>ADD TO PLAN</button>
                 </div>
                     ))}
