@@ -8,7 +8,6 @@ class Products extends React.Component {
         this.state = {
          products: images,
         }
-        this.changeView = this.changeView.bind(this);
     }
     
     // componentDidMount() {
