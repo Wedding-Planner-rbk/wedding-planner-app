@@ -28,7 +28,7 @@ class Hall extends Component {
                  <h3>{hall.name}</h3>
                  <p>{hall.description}</p>
                  <p>Price : {hall.price}</p>
-                 <button className="btn btn-outline-secondary" onClick={()=>{this.props.selectHall(hall.id)
+                 <button className="btn btn-outline-secondary" onClick={()=>{this.props.selectHall(hall)
                 this.props.changeView('products')}}>ADD TO PLAN</button>
             </div>
                 ))}

@@ -31,7 +31,7 @@ class Music extends Component {
                     <h3>{band.name}</h3>
                     <p>{band.description}</p>
                     <p>Price : {band.price}</p>
-                    <button className="btn btn-outline-secondary" onClick={()=>{this.props.selectMusic(band.id)
+                    <button className="btn btn-outline-secondary" onClick={()=>{this.props.selectMusic(band)
                 this.props.changeView('products')}}>ADD TO PLAN</button>
                     </div>
              ))}
