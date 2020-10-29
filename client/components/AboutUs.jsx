@@ -1,5 +1,5 @@
 import React from 'react';
-import SocialFollow from './socialFollow/SocialFollow';
+import SocialFollow from './socialFollow/SocialFollow.jsx';
 
 class AboutUs extends React.Component {
     
