@@ -18,25 +18,29 @@ class Cakes extends Component {
     }
     render() {
         return (
-            <div className="container">
-            <h2>The velvet box wedding Cakes </h2>
-            <p>
-           </p>
+            <div className="container-fluid">
+                <h2>The velvet box wedding Cakes </h2>
+                <p>
+                </p>
                 <h2>All Products</h2>
-            <div className="row">
-                {this.state.weddingCakes.map(weddingCake => (
-                 <div key={weddingCake.id} className="col-sm">
-                <img key={weddingCake.id} src={weddingCake.imageUrl} className="img-thumbnail previewImage"/>
-                 <h3>{weddingCake.name}</h3>
-                 <p>{weddingCake.description}</p>
-                 <p>Price : {weddingCake.price}</p>
-                 <button className="btn btn-outline-secondary" onClick={()=>{this.props.selectCake(weddingCake)
-                this.props.changeView('products')}}>ADD TO PLAN</button>
-                </div>
-         ))}
+                <div >
+                    {this.state.weddingCakes.map(weddingCake => (
+                        <div key={weddingCake.id} className='row justify-content-start'>
+                            <div  className="col-md-2">
+                                <img src={weddingCake.imageUrl} className="img-thumbnail previewImage"/>
+                            </div>
+                            <div className="col-md-10 p-4 pl-md-0">
+                                <h3 className="mt-0">{weddingCake.name}</h3>
+                                <p>{weddingCake.description}</p>
+                                <p>Price : {weddingCake.price} DT</p>
+                                <button className="btn btn-outline-secondary" onClick={()=>{this.props.selectCake(weddingCake)
+                                this.props.changeView('products')}}>ADD TO PLAN</button>
+                            </div>
+                        </div>
+                    ))}
                 </div>
                 
-                 </div> 
+            </div> 
         );
     }
 }
