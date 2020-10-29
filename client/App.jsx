@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import AboutUs from './components/AboutUs.jsx';
 import Login from './components/Login.jsx';
 import Packages from './components/Packages.jsx';
+import Pack from './components/Pack.jsx';
 import Products from './components/Products.jsx';
 import Flowers from './components/Flowers.jsx';
 import Cakes from './components/Cakes.jsx';
@@ -16,12 +17,13 @@ class App extends React.Component {
         this.state = {
             view: 'home',
             packages: [],
-            currentPackage: null,
-            selectedFlower: null,
-            selectedCake: null,
-            selectedMusic: null,
-            selectedHall: null,
+            currentPackage: {},
+            selectedFlower: {},
+            selectedCake: {},
+            selectedMusic: {},
+            selectedHall: {},
             budget: 0,
+            price: 0,
             startWithBudget: false
         }
         this.handleEventOnChange = this.handleEventOnChange.bind(this);
@@ -29,7 +31,7 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        // $.get('/packages').then(results => {
+        // $.get('/pakages').then(results => {
         //     console.log(results)
         //     var first = Math.floor(Math.random() * results.length);
         //     do {
@@ -64,30 +66,50 @@ class App extends React.Component {
             view: option
         })
     }
-    selectPackage(id) {
+    selectPackage(pack) {
         this.setState({
-            currentPackage: id
+            currentPackage: pack
         })
     }
-    selectFlower(id) {
+    selectFlower(flower) {
         this.setState({
-            selectedFlower: id
+            selectedFlower: flower
         })
+        if(this.state.startWithBudget) {
+            this.setState(prevState => ({
+                price: prevState.price + flower.price
+            }))
+        }
     }
-    selectCake(id) {
+    selectCake(cake) {
         this.setState({
-            selectedCake: id
+            selectedCake: cake
         })
+        if(this.state.startWithBudget) {
+            this.setState(prevState => ({
+                price: prevState.price + cake.price
+            }))
+        }
     }
-    selectHall(id) {
+    selectHall(hall) {
         this.setState({
-            selectedHall: id
+            selectedHall: hall
         })
+        if(this.state.startWithBudget) {
+            this.setState(prevState => ({
+                price: prevState.price + hall.price
+            }))
+        }
     }
-    selectMusic(id) {
+    selectMusic(music) {
         this.setState({
-            selectedMusic: id
+            selectedMusic: music
         })
+        if(this.state.startWithBudget) {
+            this.setState(prevState => ({
+                price: prevState.price + music.price
+            }))
+        }
     }
 
     render() {
@@ -151,7 +173,7 @@ class App extends React.Component {
                 : this.state.view === 'products' ?
                 <Products changeView = {this.changeView}/>
                 : this.state.view === 'package' ? 
-                <Package changeView = {this.changeView} />
+                <Pack changeView = {this.changeView} />
                 : this.state.view === 'cakes' ? 
                 <Cakes />
                 : this.state.view === 'flowers' ? 
