@@ -22,30 +22,31 @@ CREATE TABLE users (
   PRIMARY KEY (id)
 );
 
-INSERT into users ( firstName, lastName, address, zipCode, city, phone, username,email, password, flowers_id,cakes_id,music_id,hall_id) VALUES ("Haykel","Hadj Salem", "Sousse", 2002,"Khzema",22555666,"Hayha","12345",NULL,NULL,NULL,NULL);
-INSERT into users ( firstName, lastName, address, zipCode, city, phone, username,email, password, flowers_id,cakes_id,music_id,hall_id) VALUES ("Nadim","Barkati", "Tunis", 2001,"Bardo",20555666,"Naba","123456",NULL,NULL,NULL,NULL);
-INSERT into users ( firstName, lastName, address, zipCode, city, phone, username,email, password, flowers_id,cakes_id,music_id,hall_id) VALUES ("Chayma","Ben Thabet", "Nabeul", 2003,"Mrezga",23564789,"Chabe","25014",NULL,NULL,NULL,NULL);
-INSERT into users ( firstName, lastName, address, zipCode, city, phone, username,email, password, flowers_id,cakes_id,music_id,hall_id) VALUES ("Dhia","Fattoum", "Gafsa", 2005,"Ville",24589647,"Dhifa","20546",NULL,NULL,NULL,NULL);
-INSERT into users ( firstName, lastName, address, zipCode, city, phone, username,email, password, flowers_id,cakes_id,music_id,hall_id) VALUES ("Issam","Ben Mansour", "Sfax", 2004,"Gremda",20145365,"Isbe","25631",NULL,NULL,NULL,NULL);
-INSERT into users ( firstName, lastName, address, zipCode, city, phone, username,email, password, flowers_id,cakes_id,music_id,hall_id) VALUES ("Hanen","loulou", "Gabes", 2022,"Hamma",23145678,"halou","12345678",NULL,NULL,NULL,NULL);
-INSERT into users ( firstName, lastName, address, zipCode, city, phone, username,email, password, flowers_id,cakes_id,music_id,hall_id) VALUES ("Alex","Khbou", "Sfax", 2021,"Afrane",89654122,"Akh","3456789",NULL,NULL,NULL,NULL);
-INSERT into users ( firstName, lastName, address, zipCode, city, phone, username,email, password, flowers_id,cakes_id,music_id,hall_id) VALUES ("Larissa","Bellucci", "Italia", 30125,"Milano",21365478,"Labe","0231456",NULL,NULL,NULL,NULL);
-INSERT into users ( firstName, lastName, address, zipCode, city, phone, username,email, password, flowers_id,cakes_id,music_id,hall_id) VALUES ("Dhia","Mbarki", "Mhamdia", 3014,"Village",89541200,"Dhmb","3654789",NULL,NULL,NULL,NULL);
-INSERT into users ( firstName, lastName, address, zipCode, city, phone, username,email, password, flowers_id,cakes_id,music_id,hall_id) VALUES ("Nesrine","Abid", "Ariana", 2004,"Sokra",97485632,"Neb","6987452",NULL,NULL,NULL,NULL);
+INSERT into users ( firstName, lastName, address, zipCode, city, phone, username,email, password, flowers_id,cakes_id,music_id,hall_id) VALUES ("Haykel","Hadj Salem", "Sousse", 2002,"Khzema",22555666,"Hayha","haykel@gmail.com","12345",NULL,NULL,NULL,NULL);
+INSERT into users ( firstName, lastName, address, zipCode, city, phone, username,email, password, flowers_id,cakes_id,music_id,hall_id) VALUES ("Nadim","Barkati", "Tunis", 2001,"Bardo",20555666,"Naba","nadim@gmail.com","123456",NULL,NULL,NULL,NULL);
+INSERT into users ( firstName, lastName, address, zipCode, city, phone, username,email, password, flowers_id,cakes_id,music_id,hall_id) VALUES ("Chayma","Ben Thabet", "Nabeul", 2003,"Mrezga",23564789,"Chabe","chayma@gmail.com","25014",NULL,NULL,NULL,NULL);
+INSERT into users ( firstName, lastName, address, zipCode, city, phone, username,email, password, flowers_id,cakes_id,music_id,hall_id) VALUES ("Dhia","Fattoum", "Gafsa", 2005,"Ville",24589647,"Dhifa","dhia@gmail.com","20546",NULL,NULL,NULL,NULL);
+INSERT into users ( firstName, lastName, address, zipCode, city, phone, username,email, password, flowers_id,cakes_id,music_id,hall_id) VALUES ("Issam","Ben Mansour", "Sfax", 2004,"Gremda",20145365,"Isbe","issam@gmail.com","25631",NULL,NULL,NULL,NULL);
+INSERT into users ( firstName, lastName, address, zipCode, city, phone, username,email, password, flowers_id,cakes_id,music_id,hall_id) VALUES ("Hanen","loulou", "Gabes", 2022,"Hamma",23145678,"halou","hanen@gmail.com","12345678",NULL,NULL,NULL,NULL);
+INSERT into users ( firstName, lastName, address, zipCode, city, phone, username,email, password, flowers_id,cakes_id,music_id,hall_id) VALUES ("Alex","Khbou", "Sfax", 2021,"Afrane",89654122,"Akh","alex@gmail.com","3456789",NULL,NULL,NULL,NULL);
+INSERT into users ( firstName, lastName, address, zipCode, city, phone, username,email, password, flowers_id,cakes_id,music_id,hall_id) VALUES ("Larissa","Bellucci", "Italia", 30125,"Milano",21365478,"Labe","larissa@gmail.com","0231456",NULL,NULL,NULL,NULL);
+INSERT into users ( firstName, lastName, address, zipCode, city, phone, username,email, password, flowers_id,cakes_id,music_id,hall_id) VALUES ("Dhia","Mbarki", "Mhamdia", 3014,"Village",89541200,"Dhmb","dhia2@gmail.com","3654789",NULL,NULL,NULL,NULL);
+INSERT into users ( firstName, lastName, address, zipCode, city, phone, username,email, password, flowers_id,cakes_id,music_id,hall_id) VALUES ("Nesrine","Abid", "Ariana", 2004,"Sokra",97485632,"Neb","nesrin@gmail.com","6987452",NULL,NULL,NULL,NULL);
 
 
  CREATE TABLE provider (
   id int NOT NULL AUTO_INCREMENT,
   firstName varchar(255) NOT NULL,
+  lastName varchar(255) NOT NULL,
   speciality varchar(255) NOT NULL,
   username varchar(255) NOT NULL,
   email varchar(255) NOT NULL,
-  password varchar(255) NOT NULL,
-  provider_id int NOT NULL,
+  password varchar(25) NOT NULL,
+  phone INT NOT NULL,
    PRIMARY KEY (id)
 );
 
-INSERT into provider ( firstName, speciality, username,email, password, provider_id) VALUES ("Mourad","Photography", "mouphot", "mouradpoto@mourad.com","12345",10);
+INSERT into provider ( firstName, speciality, username,email, password, provider_id) VALUES ("Nadhir","Mindfreak","Photography", "mouphot", "mouradpoto@mourad.com","12345",10);
 INSERT into provider ( firstName, speciality, username,email, password, provider_id) VALUES ("Alaa","Flowers", "Af", "alaaflo@alaaflo.com","123456",20);
 INSERT into provider ( firstName, speciality, username,email, password, provider_id) VALUES ("Dhia","Cakes", "Dhc", "dhiacake@dhiacake.com","23456",30);
 INSERT into provider ( firstName,speciality, username,email, password, provider_id) VALUES ("Ahmed","Music", "ahmu", "ahmedmusic@ahmedmusic.com","34567",40);
@@ -54,8 +55,8 @@ INSERT into provider ( firstName, speciality, username,email, password, provider
 CREATE TABLE flowers (
   id int NOT NULL AUTO_INCREMENT,
   name varchar(255) NOT NULL,
-  imageUrl varchar(255) NOT NULL,
-  description  email varchar(255) NOT NULL,
+  imageUrl varchar(700) NOT NULL,
+  description varchar(1000) NOT NULL,
   price int NOT NULL, 
   provider_id int NOT NULL,
    PRIMARY KEY (id)
@@ -79,8 +80,8 @@ INSERT into flowers (name,imageUrl,description,price,provider_id) VALUES ("Arran
 CREATE TABLE cakes (
   id int NOT NULL AUTO_INCREMENT,
   name varchar(255) NOT NULL,
-  imageUrl varchar(255) NOT NULL,
-  description  email varchar(255) NOT NULL,
+  imageUrl varchar(700) NOT NULL,
+  description varchar(1000) NOT NULL,
   price int NOT NULL,
   provider_id int NOT NULL,
    PRIMARY KEY (id)
@@ -102,8 +103,8 @@ INSERT into cakes (name,imageUrl,description,price,provider_id) VALUES ("Divine 
 CREATE TABLE music (
   id int NOT NULL AUTO_INCREMENT,
   name varchar(255) NOT NULL,
-  imageUrl varchar(255) NOT NULL,
-  description  email varchar(255) NOT NULL,
+  imageUrl varchar(700) NOT NULL,
+  description varchar(1000) NOT NULL,
   price int NOT NULL,
   provider_id int NOT NULL,
    PRIMARY KEY (id)
@@ -125,8 +126,8 @@ INSERT into music (name,imageUrl,description,price,provider_id) VALUES ("Live Gu
 CREATE TABLE hall (
   id int NOT NULL AUTO_INCREMENT,
   name varchar(255) NOT NULL,
-  imageUrl varchar(255) NOT NULL,
-  description  email varchar(255) NOT NULL,
+  imageUrl varchar(700) NOT NULL,
+  description varchar(1000) NOT NULL,
   price int NOT NULL,
   provider_id int NOT NULL,
    PRIMARY KEY (id)
@@ -158,13 +159,18 @@ INSERT into hall (name, imageUrl, description,price,provider_id) VALUES("High Ro
   name varchar(255) NOT NULL,
   description varchar(255) NOT NULL,
   price INT NOT NULL,
+  image_url varchar(500) NOT NULL,
      PRIMARY KEY (id)
 );
 
-INSERT into packages (hall_id,flowers_id,cakes_id,music_id, name , description,price) VALUES (0,0,0,0, "Basic", "Exchange vows with this intimate, personalized wedding package for two.", 12000  );
+INSERT into packages (hall_id,flowers_id,cakes_id,music_id, name , description,price,image_url) VALUES (1,1,1,1, "Basic", "Exchange vows with this intimate, personalized wedding package for two.", 8800, 'https://bbc136b7ae3badc49324-4505d403f77dee961d206e5b048c01ea.ssl.cf3.rackcdn.com/SeDireOui/web/modele-business-plan-wedding-planner-thumb.jpg'  );
 
-INSERT into packages (hall_id,flowers_id,cakes_id,music_id, name , description,price) VALUES (1,1,1,1,"Great","Promise forever with this vow renewal package for 6 guests.",15000);
+INSERT into packages (hall_id,flowers_id,cakes_id,music_id, name , description,price,image_url) VALUES (2,2,2,2,"Great","Promise forever with this vow renewal package for 6 guests.",10000,'https://www.mariage.com/wp-content/uploads/2016/04/une-mariage-papiers.jpg');
 
-INSERT into packages (hall_id,flowers_id,cakes_id,music_id, name , description,price) VALUES (2,2,2,2, "Fabulous", "Tie the knot in a romantic Vegas wedding ceremony, with flowers, photos, and limo to chapel.", 20000);
+INSERT into packages (hall_id,flowers_id,cakes_id,music_id, name , description,price,image_url) VALUES (3,3,3,3, "Fabulous", "Tie the knot in a romantic wedding ceremony, with flowers, photos.", 7800,'https://www.mariage.com/wp-content/uploads/2016/02/une-mariage-romantique.jpg');
 
-INSERT into packages (hall_id,flowers_id,cakes_id,music_id, name , description,price) VALUES (3,3,3,3, "Premium", "All-inclusive wedding with memorable on-site photo session and upgrades for newlyweds.", 25000);
+INSERT into packages (hall_id,flowers_id,cakes_id,music_id, name , description,price,image_url) VALUES (4,4,4,4, "Premium", "All-inclusive wedding with memorable on-site photo session and upgrades for newlyweds.", 9000,'https://file.weddingchicks.com/662169_jesi-haack-wedding.jpg');
+INSERT into packages (hall_id,flowers_id,cakes_id,music_id, name , description,price,image_url) VALUES (5,5,5,5,"Classic","elicate white florals, plenty of lush greenery, light linens, and minimal decor: These tried and true wedding details will never go out of style. And if you're a bride who prefers timelessness over trends, we suggest planning your ceremony and reception in a classic wedding style.",6500,"https://i.pinimg.com/564x/d4/43/7a/d4437a517853f243661df53cc1a34aa8.jpg");
+INSERT into packages (hall_id,flowers_id,cakes_id,music_id, name , description,price,image_url) VALUES (6,6,6,6, "Traditional", "Anthropology. the primary established form of marriage recognized in a given country or religious or social group at a given time: In that culture, traditional marriage requires the families of the future bride and groom to engage in ritual visits and exchange gifts.", 12000,'https://pbs.twimg.com/media/D21oc4CWwAMHwAt.jpg');
+INSERT into packages (hall_id,flowers_id,cakes_id,music_id, name , description,price,image_url) VALUES (7,7,7,7, "Islamic", "Muslim marriage and Islamic wedding customs are traditions and practices that relate to wedding ceremonies and marriage rituals prevailing within the Muslim world. Although Islamic marriage customs and relations vary depending on country of origin and government regulations, both Muslim men and women from around the world are guided by Islamic laws and practices specified in the Quran.", 7500,'https://www.weddingdetails.com/wp-content/uploads/2019/03/muslimwedding.jpg');
+INSERT into packages (hall_id,flowers_id,cakes_id,music_id, name , description,price,image_url) VALUES (8,8,8,8,"Civil Ceremonies","A civil ceremony is simply a nonreligious, legal marriage ceremony presided over by a legal official instead of a religious one.",6500,'https://media-api.theknot.com/images/2b8e05ef-abe8-4b8d-8b33-ab2363ef3086');

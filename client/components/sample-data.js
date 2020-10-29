@@ -1,4 +1,4 @@
-let images = [
+let products = [
     {
         id: 0,
         name: 'Flowers',
@@ -18,4 +18,4 @@ let images = [
     img : "https://justmarry.com/wp-content/uploads/2020-Wedding-Cake-Trends-Featured-Just-Marry-Weddings-Bumby-Photography.jpg"
 }
 ]
-export default images;
+export default products;
