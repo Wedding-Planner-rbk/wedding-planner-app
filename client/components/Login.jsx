@@ -9,7 +9,8 @@ class LogIn extends React.Component {
       users:[],
       username:"",
       password:"",
-      pass:""
+      pass:"",
+      currentUser : {}
     }
     this.check=this.check.bind(this)
   }
@@ -30,6 +31,8 @@ class LogIn extends React.Component {
     console.log(usernameList)
     const passwordList = this.state.users.map((element)=>
     element.password );
+
+    
 /*     const idList = this.state.users.map((element)=>
     element.id); */
     
@@ -40,7 +43,7 @@ class LogIn extends React.Component {
     }else if(usernameList.indexOf(this.state.username) !== -1 && passwordList[usernameList.indexOf(this.state.username)] !== this.state.password ){ 
       alert("Your password is incorrect")
     }else if(usernameList.indexOf(this.state.username) !== -1 && passwordList[usernameList.indexOf(this.state.username)] === this.state.password ){
-      this.setState({pass:this.state.pass= "Profile"}) 
+      this.setState({pass:this.state.pass= "Profile", currentUser: this.state.users[usernameList.indexOf(this.state.username)]}) 
       //  user_id:this.state.user_id = idList[usernameList.indexOf(this.state.userName)]})
     } 
   }
@@ -79,7 +82,7 @@ class LogIn extends React.Component {
     return (
       <div>
         {/* could you please put the name of the right component */}
-          <Profile {...this.state.users=[users.indexOf(this.state.users)] }/> 
+          <Profile user={this.state.currentUser }/>
       </div>
     )
     }
