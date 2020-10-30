@@ -9,12 +9,16 @@ class flowers extends Component {
     }
     componentDidMount() {
         $.get('/flowers').then(results => {
-                    console.log(results)
-                    this.setState({
-                        bouquets:results,
-                        
-                    })
+            if(this.props.budget) {
+                this.setState({
+                    bouquets: results.filter(cake => cake.price <= this.props.balance)
                 })
+            } else {
+                this.setState({
+                        bouquets:results,
+                })
+            } 
+        })
             
     }
     render() {
@@ -22,20 +26,27 @@ class flowers extends Component {
             <div className="container">
                 <h2>The velvet box Wedding Floral Designs</h2>
                 <p>True to our name, The velvet box has a full-service floral design team on-site for your wedding. Our professional staff of florists are always adding trendy and fashionable floral creations found in wedding .</p>
-                <div className="row">
-                 {this.state.bouquets.map(bouquet => (
-                     <div key={bouquet.id} className="col-sm">
-                     <img key={bouquet.id} src={bouquet.imageUrl} className="img-thumbnail previewImage"  />
-                     <h3>{bouquet.name}</h3>
-                     <p>{bouquet.description}</p>
-                     <p>Price : {bouquet.price}</p>
-                     <button className="btn btn-outline-secondary" onClick={()=>{this.props.selectFlower(bouquet) 
-                    this.props.changeView('products')}}>ADD TO PLAN</button>
-                </div>
+                <div>
+                    {this.state.bouquets.map(bouquet => (
+                    <div key={bouquet.id} className="card mb-3">
+                        <div className="row g-0">
+                            <div className="col-md-4">
+                                <img src={bouquet.imageUrl} className="rounded previewImage"/>
+                            </div>
+                            <div className="col-md-8">
+                                <div className="card-body">
+                                    <h3 className="card-title">{bouquet.name}</h3>
+                                    <p className="card-title">{bouquet.description}</p>
+                                    <p className="card-title">Price : {bouquet.price} DT</p>
+                                    <button className="btn btn-outline-secondary" onClick={()=>{this.props.selectFlower(bouquet) 
+                                    this.props.changeView('products')}}>ADD TO PLAN</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     ))}
                 </div>
-            </div>
-             
+            </div>  
         );
     }
 }

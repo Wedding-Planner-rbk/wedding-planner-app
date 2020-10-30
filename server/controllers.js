@@ -28,26 +28,23 @@ exports.getAllPackages =(req, res)=>{
 }
     
 exports.findOnePackage=(req,res)=>{
-   var package_id = req.body.id;
    var package =[]
-
-   db.selectPackage(package_id).then(data=> {
-
-     db.selectFlower(data.id_flower).then(flower=> package.push(flower))
-     db.selectCake(data.id_cake).then(cake => package.push(cake))
-     db.selectHall(data.id_hall).then( hall => package.push(hall))
-     db.selectMusic(data.id_Band).then(music => package.push(music))
-
-
-    res.status(200).json({package,data})
-    
-   })
-    .catch(error => res.status(500).send(error))  
-
+   db.selectFlower(req.body.flowers_id).then(flower=> {
+     package.push(flower[0]);
+     db.selectCake(req.body.cakes_id).then(cake => {
+       package.push(cake[0]);
+       db.selectHall(req.body.hall_id).then(hall => {
+         package.push(hall[0]);
+         db.selectMusic(req.body.music_id).then(music => {
+           package.push(music[0]);
+           res.status(200).json({package})
+          })
+        })
+      })
+    })
+    .catch(error => res.status(500).send(error));
 }
   
-
-
 
 exports.findUser= (req, res) => {
   db.selectUser(req.body.id).then((user) => {
