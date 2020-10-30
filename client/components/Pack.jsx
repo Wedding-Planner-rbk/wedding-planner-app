@@ -1,6 +1,5 @@
 import React from "react";
 import $ from "jquery";
-import Packageitem from "./Packageitem.jsx";
 class Pack extends React.Component {
     constructor(props) {
       super(props);
@@ -11,10 +10,12 @@ class Pack extends React.Component {
     }
   
    componentDidMount() {
-      $.post("/package",{id:this.state.pack.id}).then((result) => {
-        console.log(result.pack)
+      $.post("/package",{flowers_id: this.state.pack.flowers_id, cakes_id: this.state.pack.cakes_id,
+                          hall_id: this.state.pack.hall_id, music_id: this.state.pack.music_id
+      }).then((result) => {
+        console.log(result.package)
         this.setState({
-          products: result.pack
+          products: result.package
         });
       });  
     }
@@ -26,15 +27,14 @@ class Pack extends React.Component {
                description
             <div className="container">
                     <div className="row">
-                        {this.state.products.map(pack => 
-                            <div key={pack.id} className="col-sm">
-                            <img src={pack.image_url} className="img-thumbnail previewImage" 
-                           />
-                           <button> reserve </button>
-                            <h4>Type: {pack.name}</h4>
-                            <span>Price: {pack.price} DT</span>
+                        {this.state.products.map((product, index) => 
+                            <div key={index} className="col-sm">
+                            <img src={product.imageUrl} className="img-thumbnail previewImage" />
+                            <h4>Type: {product.name}</h4>
+                            <span>Price: {product.price} DT</span>
                         </div>)}
                     </div>
+                    <button> reserve </button>
                     </div>
 
           </div>

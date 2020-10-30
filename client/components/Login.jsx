@@ -1,6 +1,6 @@
 import React from "react";
-import App from "./App.jsx";
-import SignUp from "./SignUp.jsx"
+import $ from 'jquery';
+import SignUp from "./SignUp.jsx";
 
 class LogIn extends React.Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class LogIn extends React.Component {
     this.check=this.check.bind(this)
   }
   componentDidMount(){
-    axios.get("YOUR URL ").then((res)=>{
+    $.get("YOUR URL ").then((res)=>{
       this.setState({
         users:res.data,
         username: "",
@@ -81,7 +81,7 @@ class LogIn extends React.Component {
     return (
       <div>
         {/* could you please put the name of the right component */}
-          <App name={this.state.userName} userId={this.state.userId}/>
+          {/* <App name={this.state.userName} userId={this.state.userId}/> */}
       </div>
     )
     }
