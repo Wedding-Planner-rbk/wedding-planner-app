@@ -24,13 +24,13 @@ class Cakes extends Component {
            </p>
                 <h2>All Products</h2>
             <div className="row">
-                {this.state.products.map(weddingCake => (
+                {this.state.weddingCakes.map(weddingCake => (
                  <div key={weddingCake.id} className="col-sm">
                 <img key={weddingCake.id} src={weddingCake.imageUrl} className="img-thumbnail previewImage"/>
                  <h3>{weddingCake.name}</h3>
                  <p>{weddingCake.description}</p>
                  <p>Price : {weddingCake.price}</p>
-                 <button className="btn btn-outline-secondary" onClick={()=>{this.props.selectCake(weddingCake.id)
+                 <button className="btn btn-outline-secondary" onClick={()=>{this.props.selectCake(weddingCake)
                 this.props.changeView('products')}}>ADD TO PLAN</button>
                 </div>
          ))}
