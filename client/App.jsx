@@ -51,12 +51,6 @@ class App extends React.Component {
                 data:results
             }))
         })
-        // var packages = [{id:0, name: 'Basic', price: 8000, imageUrl: 'https://bbc136b7ae3badc49324-4505d403f77dee961d206e5b048c01ea.ssl.cf3.rackcdn.com/SeDireOui/web/modele-business-plan-wedding-planner-thumb.jpg'},
-        // {id: 1, name: 'Simple', price: 10000, imageUrl: 'https://www.mariage.com/wp-content/uploads/2016/04/une-mariage-papiers.jpg'},
-        // {id: 2, name: 'Romantic', price: 12000, imageUrl: 'https://www.mariage.com/wp-content/uploads/2016/02/une-mariage-romantique.jpg'}];
-        // this.setState({
-        //     packages
-        // })
     }
     handleEventOnChange(e) {
         this.setState({
@@ -187,13 +181,17 @@ class App extends React.Component {
                 : this.state.view === 'package' ? 
                 <Pack changeView = {this.changeView} pack={this.state.currentPackage} />
                 : this.state.view === 'Cakes' ? 
-                <Cakes selectCake= {this.selectCake} changeView = {this.changeView}/>
+                <Cakes selectCake= {this.selectCake} changeView = {this.changeView} budget = {this.state.startWithBudget} 
+                        balance = {this.state.budget - this.state.price} />
                 : this.state.view === 'Flowers' ? 
-                <Flowers selectFlower= {this.selectFlower} changeView = {this.changeView}/>
+                <Flowers selectFlower= {this.selectFlower} changeView = {this.changeView} budget = {this.state.startWithBudget} 
+                balance = {this.state.budget - this.state.price} />
                 : this.state.view === 'Halls' ? 
-                <Hall selectHall= {this.selectHall} changeView = {this.changeView}/>
+                <Hall selectHall= {this.selectHall} changeView = {this.changeView} budget = {this.state.startWithBudget} 
+                balance = {this.state.budget - this.state.price} />
                 : this.state.view === 'Music Bands' ? 
-                <Music selectMusic= {this.selectMusic} changeView = {this.changeView}/>
+                <Music selectMusic= {this.selectMusic} changeView = {this.changeView} budget = {this.state.startWithBudget} 
+                balance = {this.state.budget - this.state.price} />
                 : this.state.view === 'login' ? 
                 <LogIn />
                 : this.state.view === 'aboutUs' ? 
