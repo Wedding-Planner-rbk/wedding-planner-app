@@ -38,6 +38,7 @@ class App extends React.Component {
     }
 
     componentDidMount() {
+        //fetch all packages from database and select three random ones to display on home page
         $.get('/pakages').then(results => {
             // console.log(results)
             var first = Math.floor(Math.random() * results.length);
@@ -53,6 +54,7 @@ class App extends React.Component {
             }))
         })
     }
+    //set states for budget 
     handleEventOnChange(e) {
         this.setState({
             budget: e.target.value
@@ -64,11 +66,12 @@ class App extends React.Component {
         })
     }
     changeView(option) {
-        // console.log('budget', this.state.budget, 'price', this.state.price)
+        // function responsible for changing views in the whole app
         this.setState({
             view: option
         })
     }
+    //set current states for package, user and products
     setCurrentUser(user) {
         this.setState({
             currentUser: user
@@ -83,11 +86,13 @@ class App extends React.Component {
         this.setState({
             selectedFlower: flower
         })
+        //update the price state with selected item price
         if(this.state.startWithBudget) {
             this.setState(prevState => ({
                 price: prevState.price + flower.price
             }))
         }
+        //update the flower id field in the current user row of users database table
         if(!!this.state.currentUser.id) {
             $.post('/user/flower', {user_id: this.state.currentUser.id, flower_id: this.state.selectedFlower.id})
             .then(result => this.setState({
