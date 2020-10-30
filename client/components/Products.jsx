@@ -1,47 +1,58 @@
 import React from 'react';
-import $ from 'jquery';
-import images from "./sample-data.js"
+import products from "./sample-data.js"
 
 class Products extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-         products: images,
+         products: products,
         }
-        this.changeView = this.changeView.bind(this);
     }
     
-    // componentDidMount() {
-    //     $.get('/products').then(results => {
-    //         console.log(results)
-    //         this.setState({
-    //             products:results.data,
-    //         })
-    //     })
-    // }
+    componentDidMount() {
+        if(!!this.props.selectedFlower.id)
+            this.setState(prevState => ({
+                products: prevState.products.filter(product => product.name !== 'Flowers')
+            }))
+        if(!!this.props.selectedCake.id)
+            this.setState(prevState => ({
+                products: prevState.products.filter(product => product.name !== 'Cakes')
+            }))
+        if(!!this.props.selectedHall.id)
+            this.setState(prevState => ({
+                products: prevState.products.filter(product => product.name !== 'Halls')
+            }))
+        if(!!this.props.selectedMusic.id)
+            this.setState(prevState => ({
+                products: prevState.products.filter(product => product.name !== 'Music Bands')
+            }))
+        
+    }
     
     
     render() { 
-            return (
-                
-                <div className="container">
-                <h2>The velvet box Products & Services </h2>
-                <p>
-                The professionals at The Velvet Box are experts at creating the ultimate wedding.we can let you choose what do you need of ourproducts like Flowers , Wedding hull , Music band , Wedding Cakes  </p>
-                    <h2>All Products</h2>
-                <div className="row">
+        return (
+            <div>
+                <h2>The Velvet Box Products & Services </h2>
+                {this.state.products.length ? <div>
+                <p>The professionals at The Velvet Box are experts at creating the ultimate wedding. 
+                We offer you the better choice with our products like Flowers , Wedding halls , Music bands and Wedding Cakes..  </p>
+                <div className="container-fluid" style={{width: '50%'}} >
+                <div className="row justify-content-md-center">
                     {this.state.products.map(product => (
-                     <div key={product.id} className="col-sm">
-                    <Image key={product.id} src={product.img} className="img-thumbnail previewImage" onClick={()=>this.props.changeView(product.name)} />
-                    <h4> {product.name}</h4>
+                    <div key={product.id} className="col-md-auto">
+                        <img key={product.id} src={product.img} className="img-thumbnail previewImage" onClick={()=>this.props.changeView(product.name)} />
+                        <center><h4> {product.name}</h4></center>
                     </div>
-             ))}
-                    </div>
-                    
-                     </div>     
-            )
-            
-        }  
-    
-    }
-    export default Products ;
+                    ))}
+                </div>
+                </div>
+                </div> 
+                : <p>Congratulations you have already reserved your plan!</p> }
+                
+            </div>    
+        )    
+    }  
+}
+
+export default Products;

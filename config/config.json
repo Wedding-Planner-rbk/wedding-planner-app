@@ -4,9 +4,9 @@
  
         "username": "root",
  
-        "password": null,
+        "password": "helloworld",
  
-        "database": "sequelize_passport",
+        "database": "wedding",
  
         "host": "127.0.0.1",
  

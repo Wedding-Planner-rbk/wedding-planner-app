@@ -183,7 +183,7 @@ const getAllFlowers = function() {
 const selectFlower= function(id){
   return new Promise((resolve, reject) =>{
     const sql ="SELECT * FROM  flowers WHERE id = ?"
-    connection.query(sql, (err, data) =>{
+    connection.query(sql,[id], (err, data) =>{
       if(err)
       reject(err);
       else resolve(data)
@@ -254,7 +254,7 @@ const getAllCakes = function() {
 const selectCake= function(id){
   return new Promise((resolve, reject) =>{
     const sql ="SELECT * FROM  cakes WHERE id = ?"
-    connection.query(sql, (err, data) =>{
+    connection.query(sql,[id] ,(err, data) =>{
       if(err)
       reject(err);
       else resolve(data)
@@ -326,7 +326,7 @@ const getAllMusic = function() {
 const selectMusic= function(id){
   return new Promise((resolve, reject) =>{
     const sql ="SELECT * FROM  music WHERE id = ?"
-    connection.query(sql, (err, data) =>{
+    connection.query(sql,[id] ,(err, data) =>{
       if(err)
       reject(err);
       else resolve(data)
@@ -397,7 +397,7 @@ const getAllhalls = function() {
 const selectHall= function(id){
   return new Promise((resolve, reject) =>{
     const sql ="SELECT * FROM  hall WHERE id = ?"
-    connection.query(sql, (err, data) =>{
+    connection.query(sql,[id] ,(err, data) =>{
       if(err)
       reject(err);
       else resolve(data)
@@ -468,7 +468,7 @@ const getAllPackages = function() {
 const selectPackage= function(id){
   return new Promise((resolve, reject) =>{
     const sql ="SELECT * FROM  packages WHERE id = ?"
-    connection.query(sql, (err, data) =>{
+    connection.query(sql,[id],(err, data) =>{
       if(err)
       reject(err);
       else resolve(data)
