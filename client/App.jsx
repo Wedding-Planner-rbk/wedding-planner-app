@@ -38,7 +38,7 @@ class App extends React.Component {
 
     componentDidMount() {
         $.get('/pakages').then(results => {
-            console.log(results)
+            // console.log(results)
             var first = Math.floor(Math.random() * results.length);
             do {
                 var second = Math.floor(Math.random() * results.length);
@@ -69,6 +69,7 @@ class App extends React.Component {
         })
     }
     changeView(option) {
+        console.log('budget', this.state.budget, 'price', this.state.price)
         this.setState({
             view: option
         })
@@ -167,7 +168,7 @@ class App extends React.Component {
                             <div key={pack.id} className="col-sm">
                             <img src={pack.image_url} className="img-thumbnail previewImage" 
                             onClick={() => {this.changeView('package')
-                                            this.selectPackage(pack.id)}}/>
+                                            this.selectPackage(pack)}}/>
                             <h4>Type: {pack.name}</h4>
                             <span>Price: {pack.price} DT</span>
                         </div>)}
@@ -178,7 +179,11 @@ class App extends React.Component {
                 : this.state.view === 'packages' ? 
                 <Packages changeView = {this.changeView} pack={this.state.data} selectPackage={this.selectPackage}/>
                 : this.state.view === 'products' ?
-                <Products changeView = {this.changeView}/>
+                <Products selectedFlower = {this.state.selectedFlower} 
+                        selectedCake = {this.state.selectedCake}
+                        selectedHall = {this.state.selectedHall}
+                        selectedMusic = {this.state.selectedMusic}
+                        changeView = {this.changeView}/>
                 : this.state.view === 'package' ? 
                 <Pack changeView = {this.changeView} pack={this.state.currentPackage} />
                 : this.state.view === 'Cakes' ? 
