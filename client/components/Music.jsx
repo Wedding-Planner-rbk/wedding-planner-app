@@ -10,11 +10,16 @@ class Music extends Component {
     }
     componentDidMount() {
         $.get('/music').then(results => {
-                    console.log(results)
-                    this.setState({
-                        bands:results,
-                    })
+            if(this.props.budget) {
+                this.setState({
+                    bands: results.filter(cake => cake.price <= this.props.balance)
                 })
+            } else {
+                this.setState({
+                        bands: results
+                })
+            } 
+        })
             
     }
     render() {
