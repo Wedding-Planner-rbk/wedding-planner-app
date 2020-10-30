@@ -25,7 +25,8 @@ class App extends React.Component {
             selectedHall: {},
             budget: 0,
             price: 0,
-            startWithBudget: false
+            startWithBudget: false,
+            currentUser: {}
         }
         this.handleEventOnChange = this.handleEventOnChange.bind(this);
         this.changeView = this.changeView.bind(this);
@@ -63,9 +64,14 @@ class App extends React.Component {
         })
     }
     changeView(option) {
-        console.log('budget', this.state.budget, 'price', this.state.price)
+        // console.log('budget', this.state.budget, 'price', this.state.price)
         this.setState({
             view: option
+        })
+    }
+    setCurrentUser(user) {
+        this.setState({
+            currentUser: user
         })
     }
     selectPackage(pack) {
@@ -82,6 +88,12 @@ class App extends React.Component {
                 price: prevState.price + flower.price
             }))
         }
+        if(!!this.state.currentUser.id) {
+            $.post('/user/flower', {user_id: this.state.currentUser.id, flower_id: this.state.selectedFlower.id})
+            .then(result => this.setState({
+                currentUser: result
+            }))
+        }
     }
     selectCake(cake) {
         this.setState({
@@ -90,6 +102,12 @@ class App extends React.Component {
         if(this.state.startWithBudget) {
             this.setState(prevState => ({
                 price: prevState.price + cake.price
+            }))
+        }
+        if(!!this.state.currentUser.id) {
+            $.post('/user/cake', {user_id: this.state.currentUser.id, cake_id: this.state.selectedCake.id})
+            .then(result => this.setState({
+                currentUser: result
             }))
         }
     }
@@ -102,6 +120,12 @@ class App extends React.Component {
                 price: prevState.price + hall.price
             }))
         }
+        if(!!this.state.currentUser.id) {
+            $.post('/user/hall', {user_id: this.state.currentUser.id, hall_id: this.state.selectedHall.id})
+            .then(result => this.setState({
+                currentUser: result
+            }))
+        }
     }
     selectMusic(music) {
         this.setState({
@@ -110,6 +134,12 @@ class App extends React.Component {
         if(this.state.startWithBudget) {
             this.setState(prevState => ({
                 price: prevState.price + music.price
+            }))
+        }
+        if(!!this.state.currentUser.id) {
+            $.post('/user/music', {user_id: this.state.currentUser.id, music_id: this.state.selectedMusic.id})
+            .then(result => this.setState({
+                currentUser: result
             }))
         }
     }
