@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import AboutUs from './components/AboutUs.jsx';
-import Login from './components/Login.jsx';
+import LogIn from './components/Login.jsx';
 import Packages from './components/Packages.jsx';
 import Pack from './components/Pack.jsx';
 import Products from './components/Products.jsx';
@@ -30,6 +30,10 @@ class App extends React.Component {
         this.handleEventOnChange = this.handleEventOnChange.bind(this);
         this.changeView = this.changeView.bind(this);
         this.selectPackage = this.selectPackage.bind(this);
+        this.selectCake = this.selectCake.bind(this);
+        this.selectFlower = this.selectFlower.bind(this);
+        this.selectHall = this.selectHall.bind(this);
+        this.selectMusic = this.selectMusic.bind(this);
     }
 
     componentDidMount() {
@@ -178,15 +182,15 @@ class App extends React.Component {
                 : this.state.view === 'package' ? 
                 <Pack changeView = {this.changeView} pack={this.state.currentPackage} />
                 : this.state.view === 'Cakes' ? 
-                <Cakes />
+                <Cakes selectCake= {this.selectCake} changeView = {this.changeView}/>
                 : this.state.view === 'Flowers' ? 
-                <Flowers />
+                <Flowers selectFlower= {this.selectFlower} changeView = {this.changeView}/>
                 : this.state.view === 'Halls' ? 
-                <Hall />
+                <Hall selectHall= {this.selectHall} changeView = {this.changeView}/>
                 : this.state.view === 'Music Bands' ? 
-                <Music />
+                <Music selectMusic= {this.selectMusic} changeView = {this.changeView}/>
                 : this.state.view === 'login' ? 
-                <Login />
+                <LogIn />
                 : this.state.view === 'aboutUs' ? 
                 <AboutUs />
                 :null}
