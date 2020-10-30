@@ -33,7 +33,6 @@ class SignUp extends React.Component {
         phone: this.state.phone,
         username: this.state.username,
         email:this.state.email,
-        name: this.state.name,
         password:this.state.password,
       }
     $.post("PUT YOUR URL",newUser)
@@ -90,7 +89,7 @@ class SignUp extends React.Component {
             <br></br>
 
             <input
-              type="text"
+              type="number"
               name="zipCode"
               placeholder="zipCode "
               value={this.state.zipCode}
@@ -112,23 +111,12 @@ class SignUp extends React.Component {
             <br></br>
 
             <input
-              type="text"
+              type="number"
               name="Phone"
               placeholder="Your Phone "
               value={this.state.phone}
               onChange={(e) => {
                 this.setState({ phone: e.target.value });
-              }}
-            />
-            <br></br>
-
-            <input
-              type="text"
-              name="name"
-              placeholder="Your name "
-              value={this.state.name}
-              onChange={(e) => {
-                this.setState({ name: e.target.value });
               }}
             />
             <br></br>
@@ -173,7 +161,7 @@ class SignUp extends React.Component {
     } else {
       return (
         <div>
-          <LogIn/>
+          <Login/>
         </div>
       );
     }
