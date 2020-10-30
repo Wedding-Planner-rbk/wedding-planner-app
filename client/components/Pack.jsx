@@ -1,34 +1,44 @@
 import React from "react";
 import $ from "jquery";
-
+import Packageitem from "./Packageitem.jsx";
 class Pack extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        pack: [],
+        pack: props.pack,
+        products:[]
       };
     }
   
-    componentDidMount() {
-      $.post("/packages").then((result) => {
+   componentDidMount() {
+      $.post("/package",{id:this.state.pack.id}).then((result) => {
+        console.log(result.pack)
         this.setState({
-          pack: result,
-          id : id 
+          products: result.pack
         });
-      });
+      });  
     }
 
     render() {
         return (
-          <div>
+        <div>
             <h1>pack</h1>
-            <ul>
-              {this.state.pack.map((pack,id) => {
-                return <Pac key={pack.id} pack={pack}/>
-                ;
-              })}
-            </ul>
+               description
+            <div className="container">
+                    <div className="row">
+                        {this.state.products.map(pack => 
+                            <div key={pack.id} className="col-sm">
+                            <img src={pack.image_url} className="img-thumbnail previewImage" 
+                           />
+                           <button> reserve </button>
+                            <h4>Type: {pack.name}</h4>
+                            <span>Price: {pack.price} DT</span>
+                        </div>)}
+                    </div>
+                    </div>
+
           </div>
+        
         );
       }
     }
