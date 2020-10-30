@@ -6,6 +6,7 @@ class SignUp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      // Intializing states based on the databse schema agreed upon with the group
       users: [],
       firstName: "",
       lastName:"",
@@ -23,6 +24,7 @@ class SignUp extends React.Component {
   }
   add(e) {
     console.log("added");
+    // add is used to allocate every state to an input, summarizing everything in the object called newUser
       e.preventDefault()
       const newUser = {
         firstName: this.state.firstName,
@@ -36,6 +38,7 @@ class SignUp extends React.Component {
         password:this.state.password,
       }
     $.post("PUT YOUR URL",newUser)
+    // posting is necessary to complete "the add" and reinitializing the states to be able to fill them again
     .then(res => console.log(res.data));
         this.setState({
           firstName: "",
@@ -47,11 +50,12 @@ class SignUp extends React.Component {
           username: "",
           password: "",
           email:"",
-          check:"Login"
+          check:"Login" // the check is a variable that will decide the next step following the multiple forms, a value "login" of a check will lead to a navigation to the "next" compnent
         })
   }
   render() {
-    if (this.state.check === "") {
+    if (this.state.check === "") // this is the initial check condition
+     { 
       return (
         <div className=" SignInForm ">
           <form onSubmit={(e) => this.add(e)}>
@@ -157,8 +161,9 @@ class SignUp extends React.Component {
             <br></br>
           </form>
         </div>
+        //multiple forms to add the states
       )
-    } else {
+    } else { // the second check condition
       return (
         <div>
           <Login/>
