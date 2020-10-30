@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import AboutUs from './components/AboutUs.jsx';
-import Login from './components/Login.jsx';
+import LogIn from './components/Login.jsx';
 import Packages from './components/Packages.jsx';
 import Pack from './components/Pack.jsx';
 import Products from './components/Products.jsx';
@@ -15,6 +15,7 @@ class App extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            data:[],
             view: 'home',
             packages: [],
             currentPackage: {},
@@ -28,6 +29,7 @@ class App extends React.Component {
         }
         this.handleEventOnChange = this.handleEventOnChange.bind(this);
         this.changeView = this.changeView.bind(this);
+        this.selectPackage = this.selectPackage.bind(this);
         this.selectCake = this.selectCake.bind(this);
         this.selectFlower = this.selectFlower.bind(this);
         this.selectHall = this.selectHall.bind(this);
@@ -45,7 +47,8 @@ class App extends React.Component {
                 var third = Math.floor(Math.random() * results.length);
             } while(third === first || third === second)
             this.setState(prevState => ({
-                packages: prevState.packages.concat(results[first], results[second], results[third])
+                packages: prevState.packages.concat(results[first], results[second], results[third]),
+                data:results
             }))
         })
         // var packages = [{id:0, name: 'Basic', price: 8000, imageUrl: 'https://bbc136b7ae3badc49324-4505d403f77dee961d206e5b048c01ea.ssl.cf3.rackcdn.com/SeDireOui/web/modele-business-plan-wedding-planner-thumb.jpg'},
@@ -173,11 +176,11 @@ class App extends React.Component {
 
                 </div> 
                 : this.state.view === 'packages' ? 
-                <Packages changeView = {this.changeView}/>
+                <Packages changeView = {this.changeView} pack={this.state.data} selectPackage={this.selectPackage}/>
                 : this.state.view === 'products' ?
                 <Products changeView = {this.changeView}/>
                 : this.state.view === 'package' ? 
-                <Pack changeView = {this.changeView} />
+                <Pack changeView = {this.changeView} pack={this.state.currentPackage} />
                 : this.state.view === 'Cakes' ? 
                 <Cakes selectCake= {this.selectCake} changeView = {this.changeView}/>
                 : this.state.view === 'Flowers' ? 
@@ -187,7 +190,7 @@ class App extends React.Component {
                 : this.state.view === 'Music Bands' ? 
                 <Music selectMusic= {this.selectMusic} changeView = {this.changeView}/>
                 : this.state.view === 'login' ? 
-                <Login />
+                <LogIn />
                 : this.state.view === 'aboutUs' ? 
                 <AboutUs />
                 :null}

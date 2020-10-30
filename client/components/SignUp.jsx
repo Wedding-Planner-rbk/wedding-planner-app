@@ -1,7 +1,7 @@
 import React from "react";
-import axios from "axios";
+import $ from "jquery";
 
-import LogIn from "./LogIn.jsx";
+import LogIn from "./Login.jsx";
 class SignUp extends React.Component {
   constructor(props) {
     super(props);
@@ -36,7 +36,7 @@ class SignUp extends React.Component {
         name: this.state.name,
         password:this.state.password,
       }
-    axios.post("PUT YOUR URL",newUser)
+    $.post("PUT YOUR URL",newUser)
     .then(res => console.log(res.data));
         this.setState({
           firstName: "",
