@@ -10,6 +10,7 @@ import Cakes from './components/Cakes.jsx';
 import Hall from './components/Hall.jsx';
 import Music from './components/Music.jsx';
 import $ from 'jquery';
+import SocialFollow from './components/socialFollow/SocialFollow.jsx';
 
 class App extends React.Component {
     constructor(props) {
@@ -150,7 +151,9 @@ class App extends React.Component {
                 </div>
                 <div className='body'>
                 {this.state.view === 'home' ? <div>
-                    <p>app description</p>
+              <h1> Wedding Planning</h1> 
+
+     <h6> Planning a wedding involves endless details, deadlines, family drama, and far too often enough stress to make you want to just elope. Use our planning checklist, read our budgeting tips, and access our wedding planner to help you pull it all together.</h6>
                     <div className='col-5'>
                         <div className="input-group mb-3">
                             <input type="number" className="form-control" placeholder="If you want to start with a fixed Budget, enter yours"
@@ -172,8 +175,9 @@ class App extends React.Component {
                             <span>Price: {pack.price} DT</span>
                         </div>)}
                     </div>
+                    <SocialFollow /> 
                     </div>
-
+                    
                 </div> 
                 : this.state.view === 'packages' ? 
                 <Packages changeView = {this.changeView} pack={this.state.data} selectPackage={this.selectPackage}/>
