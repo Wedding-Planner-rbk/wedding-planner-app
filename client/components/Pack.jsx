@@ -20,6 +20,7 @@ class Pack extends React.Component {
     }
 
     render() {
+   
         return (
         <div>
             <h1>pack</h1>
@@ -28,7 +29,7 @@ class Pack extends React.Component {
                     <div className="row">
                         {this.state.products.map(pack => 
                             <div key={pack.id} className="col-sm">
-                            <img src={pack.image_url} className="img-thumbnail previewImage" 
+                            <img src={pack.image_url} className="listImg" style={{height: '250px', width: '300px'}}
                            />
                            <button> reserve </button>
                             <h4>Type: {pack.name}</h4>
