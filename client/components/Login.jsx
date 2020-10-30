@@ -5,7 +5,7 @@ import SignUp from "./SignUp.jsx";
 class LogIn extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
+    this.state = { // states used in the mechanism of comparison with the data in the database
       users:[],
       username:"",
       password:"",
@@ -33,9 +33,7 @@ class LogIn extends React.Component {
     element.password );
 
     
-/*     const idList = this.state.users.map((element)=>
-    element.id); */
-    
+// The following is the most important part of this component: using a comparison between the input and the saved variables (states) to decide where to go next!    
     if(usernameList.indexOf(this.state.username) === -1){
       //console.log(usernameList.indexOf(this.state.username))
       alert("You should have account first , please sign up")
@@ -44,7 +42,6 @@ class LogIn extends React.Component {
       alert("Your password is incorrect")
     }else if(usernameList.indexOf(this.state.username) !== -1 && passwordList[usernameList.indexOf(this.state.username)] === this.state.password ){
       this.setState({pass:this.state.pass= "Profile", currentUser: this.state.users[usernameList.indexOf(this.state.username)]}) 
-      //  user_id:this.state.user_id = idList[usernameList.indexOf(this.state.userName)]})
     } 
   }
   render() {
@@ -81,7 +78,6 @@ class LogIn extends React.Component {
     }else if(this.state.pass === "Profile"){
     return (
       <div>
-        {/* could you please put the name of the right component */}
           <Profile user={this.state.currentUser }/>
       </div>
     )
