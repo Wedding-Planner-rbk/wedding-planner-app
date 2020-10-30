@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import AboutUs from './components/AboutUs.jsx';
-import Login from './components/Login.jsx';
+import LogIn from './components/Login.jsx';
 import Packages from './components/Packages.jsx';
 import Pack from './components/Pack.jsx';
 import Products from './components/Products.jsx';
@@ -190,7 +190,7 @@ class App extends React.Component {
                 : this.state.view === 'Music Bands' ? 
                 <Music selectMusic= {this.selectMusic} changeView = {this.changeView}/>
                 : this.state.view === 'login' ? 
-                <Login />
+                <LogIn />
                 : this.state.view === 'aboutUs' ? 
                 <AboutUs />
                 :null}

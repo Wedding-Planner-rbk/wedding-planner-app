@@ -28,31 +28,23 @@ exports.getAllPackages =(req, res)=>{
 }
     
 exports.findOnePackage=(req,res)=>{
-   var package_id = req.body.id;
    var package =[]
-  
-   db.selectPackage(package_id).then(data=> {
-     
-     var pack=data[0];
-    
-     db.selectFlower(pack.flowers_id).then(flower=> {package.concat(flower[0]) 
-    //  console.log(package)
-   
+   db.selectFlower(req.body.flowers_id).then(flower=> {
+     package.push(flower[0]);
+     db.selectCake(req.body.cakes_id).then(cake => {
+       package.push(cake[0]);
+       db.selectHall(req.body.hall_id).then(hall => {
+         package.push(hall[0]);
+         db.selectMusic(req.body.music_id).then(music => {
+           package.push(music[0]);
+           res.status(200).json({package})
+          })
+        })
+      })
     })
-     db.selectCake(pack.cakes_id).then(cake => package.concat(cake [0]))
-     db.selectHall(pack. hall_id).then( hall => package.concat(hall[0]))
-     db.selectMusic(pack.music_id).then(music => package.concat(music[0]))
-   
-     
-    res.status(200).json({package})
-    
-   })
-    .catch(error => res.status(500).send(error))  
-
+    .catch(error => res.status(500).send(error));
 }
   
-
-
 
 exports.findUser= (req, res) => {
   db.selectUser(req.body.id).then((user) => {
