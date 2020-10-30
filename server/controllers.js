@@ -46,8 +46,6 @@ exports.findOnePackage=(req,res)=>{
 }
   
 
-
-
 exports.findUser= (req, res) => {
   db.selectUser(req.body.id).then((user) => {
     if (user === null) {

@@ -8,9 +8,9 @@ class LogIn extends React.Component {
     this.state = {
       users:[],
       username:"",
-      user_id:"",
       password:"",
-      pass:""
+      pass:"",
+      currentUser : {}
     }
     this.check=this.check.bind(this)
   }
@@ -19,7 +19,6 @@ class LogIn extends React.Component {
       this.setState({
         users:res.data,
         username: "",
-        user_id:"",
         password: "",
         pass:""
       })
@@ -27,23 +26,25 @@ class LogIn extends React.Component {
   }
   check(e){
     e.preventDefault();
-    const nameList = this.state.users.map((element)=>
-    element.name ) ;
-    console.log(nameList)
+    const usernameList = this.state.users.map((element)=>
+    element.username ) ;
+    console.log(usernameList)
     const passwordList = this.state.users.map((element)=>
     element.password );
-    const idList = this.state.users.map((element)=>
-    element.id
-    )
+
     
-    if(nameList.indexOf(this.state.username) === -1){
-      //console.log(nameList.indexOf(this.state.userName))
+/*     const idList = this.state.users.map((element)=>
+    element.id); */
+    
+    if(usernameList.indexOf(this.state.username) === -1){
+      //console.log(usernameList.indexOf(this.state.username))
       alert("You should have account first , please sign up")
       this.setState({pass:this.state.pass = "signup"})
-    }else if(nameList.indexOf(this.state.username) !== -1 && passwordList[nameList.indexOf(this.state.username)] !== this.state.password ){ 
+    }else if(usernameList.indexOf(this.state.username) !== -1 && passwordList[usernameList.indexOf(this.state.username)] !== this.state.password ){ 
       alert("Your password is incorrect")
-    }else if(nameList.indexOf(this.state.username) !== -1 && passwordList[nameList.indexOf(this.state.username)] === this.state.password ){
-      this.setState({pass:this.state.pass= "accueuil" , user_id:this.state.user_id = idList[nameList.indexOf(this.state.userName)]})
+    }else if(usernameList.indexOf(this.state.username) !== -1 && passwordList[usernameList.indexOf(this.state.username)] === this.state.password ){
+      this.setState({pass:this.state.pass= "Profile", currentUser: this.state.users[usernameList.indexOf(this.state.username)]}) 
+      //  user_id:this.state.user_id = idList[usernameList.indexOf(this.state.userName)]})
     } 
   }
   render() {
@@ -77,11 +78,11 @@ class LogIn extends React.Component {
           <SignUp/>
         </div>
       )
-    }else if(this.state.pass === "accueuil"){
+    }else if(this.state.pass === "Profile"){
     return (
       <div>
         {/* could you please put the name of the right component */}
-          {/* <App name={this.state.userName} userId={this.state.userId}/> */}
+          <Profile user={this.state.currentUser }/>
       </div>
     )
     }
