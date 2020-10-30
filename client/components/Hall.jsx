@@ -9,11 +9,16 @@ class Hall extends Component {
     }
     componentDidMount() {
         $.get('/hall').then(results => {
-                    console.log(results)
-                    this.setState({
-                       weddingHalls:results,
-                    })
+            if(this.props.budget) {
+                this.setState({
+                    weddingHalls: results.filter(cake => cake.price <= this.props.balance)
                 })
+            } else {
+                this.setState({
+                        weddingHalls: results
+                })
+            } 
+        })
             
     }
     render() {

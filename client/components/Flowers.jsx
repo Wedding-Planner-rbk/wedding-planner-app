@@ -9,12 +9,16 @@ class flowers extends Component {
     }
     componentDidMount() {
         $.get('/flowers').then(results => {
-                    console.log(results)
-                    this.setState({
-                        bouquets:results,
-                        
-                    })
+            if(this.props.budget) {
+                this.setState({
+                    bouquets: results.filter(cake => cake.price <= this.props.balance)
                 })
+            } else {
+                this.setState({
+                        bouquets:results,
+                })
+            } 
+        })
             
     }
     render() {
