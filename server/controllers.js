@@ -1,15 +1,28 @@
-const { response } = require('express');
+
 var db = require('../database/index');
 
-exports.getAllServices = (req, res) => {
-    getAllServices(function(data){
-     console.log(data)
-     res.status(200).send(data)
-    })
+exports.getAllFlowers = (req, res) => {
+    db.getAllFlowers().then(data => res.status(200).json(data))
+    .catch(error => res.status(500).send(error))
+}
+
+exports.getAllCakes = (req, res) => {
+  db.getAllCakes().then(data => res.status(200).json(data))
+  .catch(error => res.status(500).send(error))
+}
+
+exports.getAllMusic = (req, res) => {
+  db.getAllMusic().then(data => res.status(200).json(data))
+  .catch(error => res.status(500).send(error))
+}
+
+exports.getAllhalls = (req, res) => {
+  db.getAllhalls().then(data => res.status(200).json(data))
+  .catch(error => res.status(500).send(error))
 }
 
 exports.getAllPackages =(req, res)=>{
-       getAllPackages().then(data => {res.status(200).json(data) })
+       db.getAllPackages().then(data => {res.status(200).json(data) })
         .catch(error => res.status(500).send(error))
    
 }
@@ -17,16 +30,21 @@ exports.getAllPackages =(req, res)=>{
 exports.findOnePackage=(req,res)=>{
    var package_id = req.body.id;
    var package =[]
-
-   selectPackage(package_id).then(data=> {
-
-     selectFlower(data.id_flower).then(flower=> package.push(flower))
-     selectCake(data.id_cake).then(cake => package.push(cake))
-     selectHall(data.id_hall).then( hall => package.push(hall))
-     selectMusic(data.id_Band).then(music => package.push(music))
-
-
-    res.status(200).json({package,data})
+  
+   db.selectPackage(package_id).then(data=> {
+     
+     var pack=data[0];
+    
+     db.selectFlower(pack.flowers_id).then(flower=> {package.concat(flower[0]) 
+    //  console.log(package)
+   
+    })
+     db.selectCake(pack.cakes_id).then(cake => package.concat(cake [0]))
+     db.selectHall(pack. hall_id).then( hall => package.concat(hall[0]))
+     db.selectMusic(pack.music_id).then(music => package.concat(music[0]))
+   
+     
+    res.status(200).json({package})
     
    })
     .catch(error => res.status(500).send(error))  
@@ -37,7 +55,7 @@ exports.findOnePackage=(req,res)=>{
 
 
 exports.findUser= (req, res) => {
-  selectUser(req.body.id).then((user) => {
+  db.selectUser(req.body.id).then((user) => {
     if (user === null) {
       res.send("does not exists");
     } else {

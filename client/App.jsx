@@ -15,40 +15,44 @@ class App extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            data:[],
             view: 'home',
             packages: [],
-            currentPackage: null,
-            selectedFlower: null,
-            selectedCake: null,
-            selectedMusic: null,
-            selectedHall: null,
+            currentPackage: {},
+            selectedFlower: {},
+            selectedCake: {},
+            selectedMusic: {},
+            selectedHall: {},
             budget: 0,
+            price: 0,
             startWithBudget: false
         }
         this.handleEventOnChange = this.handleEventOnChange.bind(this);
         this.changeView = this.changeView.bind(this);
+        this.selectPackage = this.selectPackage.bind(this);
     }
 
     componentDidMount() {
-        // $.get('/pakages').then(results => {
-        //     console.log(results)
-        //     var first = Math.floor(Math.random() * results.length);
-        //     do {
-        //         var second = Math.floor(Math.random() * results.length);
-        //     } while(second === first)
-        //     do {
-        //         var third = Math.floor(Math.random() * results.length);
-        //     } while(third === first || third === second)
-        //     this.setState(prevState => ({
-        //         packages: prevState.packages.concat(results[first], results[second], results[third])
-        //     }))
-        // })
-        var packages = [{id:0, name: 'Basic', price: 8000, imageUrl: 'https://bbc136b7ae3badc49324-4505d403f77dee961d206e5b048c01ea.ssl.cf3.rackcdn.com/SeDireOui/web/modele-business-plan-wedding-planner-thumb.jpg'},
-        {id: 1, name: 'Simple', price: 10000, imageUrl: 'https://www.mariage.com/wp-content/uploads/2016/04/une-mariage-papiers.jpg'},
-        {id: 2, name: 'Romantic', price: 12000, imageUrl: 'https://www.mariage.com/wp-content/uploads/2016/02/une-mariage-romantique.jpg'}];
-        this.setState({
-            packages
+        $.get('/pakages').then(results => {
+            console.log(results)
+            var first = Math.floor(Math.random() * results.length);
+            do {
+                var second = Math.floor(Math.random() * results.length);
+            } while(second === first)
+            do {
+                var third = Math.floor(Math.random() * results.length);
+            } while(third === first || third === second)
+            this.setState(prevState => ({
+                packages: prevState.packages.concat(results[first], results[second], results[third]),
+                data:results
+            }))
         })
+        // var packages = [{id:0, name: 'Basic', price: 8000, imageUrl: 'https://bbc136b7ae3badc49324-4505d403f77dee961d206e5b048c01ea.ssl.cf3.rackcdn.com/SeDireOui/web/modele-business-plan-wedding-planner-thumb.jpg'},
+        // {id: 1, name: 'Simple', price: 10000, imageUrl: 'https://www.mariage.com/wp-content/uploads/2016/04/une-mariage-papiers.jpg'},
+        // {id: 2, name: 'Romantic', price: 12000, imageUrl: 'https://www.mariage.com/wp-content/uploads/2016/02/une-mariage-romantique.jpg'}];
+        // this.setState({
+        //     packages
+        // })
     }
     handleEventOnChange(e) {
         this.setState({
@@ -74,21 +78,41 @@ class App extends React.Component {
         this.setState({
             selectedFlower: flower
         })
+        if(this.state.startWithBudget) {
+            this.setState(prevState => ({
+                price: prevState.price + flower.price
+            }))
+        }
     }
     selectCake(cake) {
         this.setState({
             selectedCake: cake
         })
+        if(this.state.startWithBudget) {
+            this.setState(prevState => ({
+                price: prevState.price + cake.price
+            }))
+        }
     }
     selectHall(hall) {
         this.setState({
             selectedHall: hall
         })
+        if(this.state.startWithBudget) {
+            this.setState(prevState => ({
+                price: prevState.price + hall.price
+            }))
+        }
     }
     selectMusic(music) {
         this.setState({
             selectedMusic: music
         })
+        if(this.state.startWithBudget) {
+            this.setState(prevState => ({
+                price: prevState.price + music.price
+            }))
+        }
     }
 
     render() {
@@ -137,7 +161,7 @@ class App extends React.Component {
                     <div className="row">
                         {this.state.packages.map(pack => 
                             <div key={pack.id} className="col-sm">
-                            <img src={pack.imageUrl} className="img-thumbnail previewImage" 
+                            <img src={pack.image_url} className="img-thumbnail previewImage" 
                             onClick={() => {this.changeView('package')
                                             this.selectPackage(pack.id)}}/>
                             <h4>Type: {pack.name}</h4>
@@ -148,18 +172,18 @@ class App extends React.Component {
 
                 </div> 
                 : this.state.view === 'packages' ? 
-                <Packages changeView = {this.changeView}/>
+                <Packages changeView = {this.changeView} pack={this.state.data} selectPackage={this.selectPackage}/>
                 : this.state.view === 'products' ?
                 <Products changeView = {this.changeView}/>
                 : this.state.view === 'package' ? 
-                <Pack changeView = {this.changeView} />
-                : this.state.view === 'cakes' ? 
+                <Pack changeView = {this.changeView} pack={this.state.currentPackage} />
+                : this.state.view === 'Cakes' ? 
                 <Cakes />
-                : this.state.view === 'flowers' ? 
+                : this.state.view === 'Flowers' ? 
                 <Flowers />
-                : this.state.view === 'hall' ? 
+                : this.state.view === 'Halls' ? 
                 <Hall />
-                : this.state.view === 'music' ? 
+                : this.state.view === 'Music Bands' ? 
                 <Music />
                 : this.state.view === 'login' ? 
                 <Login />
