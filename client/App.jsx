@@ -10,6 +10,7 @@ import Cakes from './components/Cakes.jsx';
 import Hall from './components/Hall.jsx';
 import Music from './components/Music.jsx';
 import $ from 'jquery';
+import SocialFollow from './components/socialFollow/SocialFollow.jsx';
 
 class App extends React.Component {
     constructor(props) {
@@ -25,8 +26,7 @@ class App extends React.Component {
             selectedHall: {},
             budget: 0,
             price: 0,
-            startWithBudget: false,
-            loggedUser: {}
+            startWithBudget: false
         }
         this.handleEventOnChange = this.handleEventOnChange.bind(this);
         this.changeView = this.changeView.bind(this);
@@ -35,13 +35,11 @@ class App extends React.Component {
         this.selectFlower = this.selectFlower.bind(this);
         this.selectHall = this.selectHall.bind(this);
         this.selectMusic = this.selectMusic.bind(this);
-        this.setCurrentUser = this.setCurrentUser.bind(this);
     }
 
     componentDidMount() {
-        //fetch all packages from database and select three random ones to display on home page
         $.get('/pakages').then(results => {
-            // console.log(results)
+            console.log(results)
             var first = Math.floor(Math.random() * results.length);
             do {
                 var second = Math.floor(Math.random() * results.length);
@@ -54,8 +52,13 @@ class App extends React.Component {
                 data:results
             }))
         })
+        // var packages = [{id:0, name: 'Basic', price: 8000, imageUrl: 'https://bbc136b7ae3badc49324-4505d403f77dee961d206e5b048c01ea.ssl.cf3.rackcdn.com/SeDireOui/web/modele-business-plan-wedding-planner-thumb.jpg'},
+        // {id: 1, name: 'Simple', price: 10000, imageUrl: 'https://www.mariage.com/wp-content/uploads/2016/04/une-mariage-papiers.jpg'},
+        // {id: 2, name: 'Romantic', price: 12000, imageUrl: 'https://www.mariage.com/wp-content/uploads/2016/02/une-mariage-romantique.jpg'}];
+        // this.setState({
+        //     packages
+        // })
     }
-    //set states for budget 
     handleEventOnChange(e) {
         this.setState({
             budget: e.target.value
@@ -67,15 +70,8 @@ class App extends React.Component {
         })
     }
     changeView(option) {
-        // function responsible for changing views in the whole app
         this.setState({
             view: option
-        })
-    }
-    //set current states for package, user and products
-    setCurrentUser(user) {
-        this.setState({
-            loggedUser: user
         })
     }
     selectPackage(pack) {
@@ -87,17 +83,9 @@ class App extends React.Component {
         this.setState({
             selectedFlower: flower
         })
-        //update the price state with selected item price
         if(this.state.startWithBudget) {
             this.setState(prevState => ({
                 price: prevState.price + flower.price
-            }))
-        }
-        //update the flower id field in the current user row of users database table
-        if(!!this.state.loggedUser.id) {
-            $.post('/user/flower', {user_id: this.state.loggedUser.id, flower_id: this.state.selectedFlower.id})
-            .then(result => this.setState({
-                loggedUser: result
             }))
         }
     }
@@ -110,12 +98,6 @@ class App extends React.Component {
                 price: prevState.price + cake.price
             }))
         }
-        if(!!this.state.loggedUser.id) {
-            $.post('/user/cake', {user_id: this.state.loggedUser.id, cake_id: this.state.selectedCake.id})
-            .then(result => this.setState({
-                loggedUser: result
-            }))
-        }
     }
     selectHall(hall) {
         this.setState({
@@ -124,12 +106,6 @@ class App extends React.Component {
         if(this.state.startWithBudget) {
             this.setState(prevState => ({
                 price: prevState.price + hall.price
-            }))
-        }
-        if(!!this.state.loggedUser.id) {
-            $.post('/user/hall', {user_id: this.state.loggedUser.id, hall_id: this.state.selectedHall.id})
-            .then(result => this.setState({
-                loggedUser: result
             }))
         }
     }
@@ -142,12 +118,6 @@ class App extends React.Component {
                 price: prevState.price + music.price
             }))
         }
-        if(!!this.state.loggedUser.id) {
-            $.post('/user/music', {user_id: this.state.loggedUser.id, music_id: this.state.selectedMusic.id})
-            .then(result => this.setState({
-                loggedUser: result
-            }))
-        }
     }
 
     render() {
@@ -155,7 +125,7 @@ class App extends React.Component {
             <div>
                 <div className="navbar navbar-light nav">
                     <div className= "container-fluid">
-                    <span className="navbar-brand" style={{color: '#FFE484'}}>The Velvet Box</span>
+                    <span className="navbar-brand" style={{color: '#32e0c4'}}>The Velvet Box</span>
                     <span className='nav-item link'
                     onClick={() => this.changeView('home')}>
                         Home
@@ -181,7 +151,12 @@ class App extends React.Component {
                 </div>
                 <div className='body'>
                 {this.state.view === 'home' ? <div>
-                    <p>app description</p>
+                <div className='espace'> </div>
+                <div className='description'>
+                <h1> Wedding Planner</h1> 
+
+     <h4> Planning a wedding involves endless details, deadlines, family drama, and far too often enough stress to make you want to just elope. Use our planning checklist, read our budgeting tips, and access our wedding planner to help you pull it all together.</h4>
+     </div>
                     <div className='col-5'>
                         <div className="input-group mb-3">
                             <input type="number" className="form-control" placeholder="If you want to start with a fixed Budget, enter yours"
@@ -198,38 +173,30 @@ class App extends React.Component {
                             <div key={pack.id} className="col-sm">
                             <img src={pack.image_url} className="img-thumbnail previewImage" 
                             onClick={() => {this.changeView('package')
-                                            this.selectPackage(pack)}}/>
+                                            this.selectPackage(pack.id)}}/>
                             <h4>Type: {pack.name}</h4>
                             <span>Price: {pack.price} DT</span>
                         </div>)}
+                    </div><SocialFollow /> 
                     </div>
-                    </div>
-
+                    
                 </div> 
                 : this.state.view === 'packages' ? 
                 <Packages changeView = {this.changeView} pack={this.state.data} selectPackage={this.selectPackage}/>
                 : this.state.view === 'products' ?
-                <Products selectedFlower = {this.state.selectedFlower} 
-                        selectedCake = {this.state.selectedCake}
-                        selectedHall = {this.state.selectedHall}
-                        selectedMusic = {this.state.selectedMusic}
-                        changeView = {this.changeView}/>
+                <Products changeView = {this.changeView}/>
                 : this.state.view === 'package' ? 
                 <Pack changeView = {this.changeView} pack={this.state.currentPackage} />
                 : this.state.view === 'Cakes' ? 
-                <Cakes selectCake= {this.selectCake} changeView = {this.changeView} budget = {this.state.startWithBudget} 
-                        balance = {this.state.budget - this.state.price} />
+                <Cakes selectCake= {this.selectCake} changeView = {this.changeView}/>
                 : this.state.view === 'Flowers' ? 
-                <Flowers selectFlower= {this.selectFlower} changeView = {this.changeView} budget = {this.state.startWithBudget} 
-                balance = {this.state.budget - this.state.price} />
+                <Flowers selectFlower= {this.selectFlower} changeView = {this.changeView}/>
                 : this.state.view === 'Halls' ? 
-                <Hall selectHall= {this.selectHall} changeView = {this.changeView} budget = {this.state.startWithBudget} 
-                balance = {this.state.budget - this.state.price} />
+                <Hall selectHall= {this.selectHall} changeView = {this.changeView}/>
                 : this.state.view === 'Music Bands' ? 
-                <Music selectMusic= {this.selectMusic} changeView = {this.changeView} budget = {this.state.startWithBudget} 
-                balance = {this.state.budget - this.state.price} />
+                <Music selectMusic= {this.selectMusic} changeView = {this.changeView}/>
                 : this.state.view === 'login' ? 
-                <LogIn setCurrentUser = {this.setCurrentUser} />
+                <LogIn />
                 : this.state.view === 'aboutUs' ? 
                 <AboutUs />
                 :null}

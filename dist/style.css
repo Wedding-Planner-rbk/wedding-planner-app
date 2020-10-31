@@ -1,8 +1,12 @@
 .body {
-    margin-left: 20px;
+    font-family: "Times New Roman";
+    background-color: antiquewhite;
+}
+.body h6{
+  color :#060930
 }
 .nav {
-    color: #FFE484;
+    color:antiquewhite;
     background-color: #7952B3;
     font-weight: bold;
     font-family: 'Carter One';
@@ -14,7 +18,7 @@
     cursor: pointer;
 }
 .social-container {
-    background: #eee;
+    background: antiquewhite;
     padding: 25px 50px;
   }
   a.social {
@@ -42,3 +46,23 @@
   a.instagram {
     color: black;
   }
+.espace{
+  height: 20px;
+}
+.container{
+  max-width: 720px;
+  height: 100%;
+}
+.form-control{
+margin-left: 20px ;
+}
+.description{
+  margin-left: 20px ;
+}
+.description h4{
+  color : #51adcf
+}
+
+h1{
+  color: #7952B3;
+}

@@ -53,13 +53,38 @@ class SignUp extends React.Component {
           check:"Login" // the check is a variable that will decide the next step following the multiple forms, a value "login" of a check will lead to a navigation to the "next" compnent
         })
   }
-  render() {
+  render() 
+  
+  {
+
+      const formContact={
+        display:'flex',
+        justifyContent:'center'
+      }
+      const inputContact={
+        width:"300px"
+      }
+      const formMain={
+        width: "420px",
+        border: "2px solid #7952B3",
+        padding: "50px", 
+        margin:'auto'
+      }
+    
+  
+
     if (this.state.check === "") // this is the initial check condition
      { 
       return (
-        <div className=" SignInForm ">
+        
+        <div className='container'>
+             <div style ={{padding: '20px', marginLeft: '255px'}}> 
+              <h1> Sign up Form </h1> 
+           </div>
+        <div className=" SignInForm " style={formMain}>
           <form onSubmit={(e) => this.add(e)}>
             <input
+              style={inputContact}
               type="text"
               name="firstName"
               placeholder="Your first name "
@@ -71,6 +96,7 @@ class SignUp extends React.Component {
             <br></br>
 
             <input
+              style={inputContact}
               type="text"
               name="lastName"
               placeholder="Your lastName name "
@@ -82,6 +108,7 @@ class SignUp extends React.Component {
             <br></br>
 
             <input
+             style={inputContact}
               type="text"
               name="address"
               placeholder="Your address "
@@ -93,6 +120,7 @@ class SignUp extends React.Component {
             <br></br>
 
             <input
+              style={inputContact}
               type="number"
               name="zipCode"
               placeholder="zipCode "
@@ -104,6 +132,7 @@ class SignUp extends React.Component {
             <br></br>
 
             <input
+              style={inputContact}
               type="text"
               name="city"
               placeholder="Your City "
@@ -115,6 +144,7 @@ class SignUp extends React.Component {
             <br></br>
 
             <input
+              style={inputContact}
               type="number"
               name="Phone"
               placeholder="Your Phone "
@@ -126,6 +156,7 @@ class SignUp extends React.Component {
             <br></br>
 
             <input
+              style={inputContact}
               type="text"
               name="username"
               placeholder="Your username "
@@ -137,6 +168,7 @@ class SignUp extends React.Component {
             <br></br>
 
             <input
+             style={inputContact}
               type="email"
               name="email"
               placeholder="Your email"
@@ -148,6 +180,7 @@ class SignUp extends React.Component {
             <br></br>
 
             <input
+             style={inputContact}
               type="password"
               name="password"
               placeholder="Your password "
@@ -157,12 +190,13 @@ class SignUp extends React.Component {
               }}
             />
             <br></br>
-            <input type="submit" value="SignUp" />
+            <br></br>
+            <input type="submit" value="SignUp"  style={inputContact} />
             <br></br>
           </form>
         </div>
         //multiple forms to add the states
-      )
+        </div> )
     } else { // the second check condition
       return (
         <div>
