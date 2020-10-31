@@ -37,9 +37,9 @@ class SignUp extends React.Component {
         email:this.state.email,
         password:this.state.password,
       }
-    $.post("PUT YOUR URL",newUser)
+    $.post("signup/user",newUser)
     // posting is necessary to complete "the add" and reinitializing the states to be able to fill them again
-    .then(res => console.log(res.data));
+  
         this.setState({
           firstName: "",
           lastName:"",
@@ -166,7 +166,7 @@ class SignUp extends React.Component {
     } else { // the second check condition
       return (
         <div>
-          <Login/>
+          <LogIn/>
         </div>
       );
     }

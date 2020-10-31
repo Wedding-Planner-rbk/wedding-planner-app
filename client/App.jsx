@@ -26,7 +26,7 @@ class App extends React.Component {
             budget: 0,
             price: 0,
             startWithBudget: false,
-            currentUser: {}
+            loggedUser: {}
         }
         this.handleEventOnChange = this.handleEventOnChange.bind(this);
         this.changeView = this.changeView.bind(this);
@@ -35,6 +35,7 @@ class App extends React.Component {
         this.selectFlower = this.selectFlower.bind(this);
         this.selectHall = this.selectHall.bind(this);
         this.selectMusic = this.selectMusic.bind(this);
+        this.setCurrentUser = this.setCurrentUser.bind(this);
     }
 
     componentDidMount() {
@@ -74,7 +75,7 @@ class App extends React.Component {
     //set current states for package, user and products
     setCurrentUser(user) {
         this.setState({
-            currentUser: user
+            loggedUser: user
         })
     }
     selectPackage(pack) {
@@ -93,10 +94,10 @@ class App extends React.Component {
             }))
         }
         //update the flower id field in the current user row of users database table
-        if(!!this.state.currentUser.id) {
-            $.post('/user/flower', {user_id: this.state.currentUser.id, flower_id: this.state.selectedFlower.id})
+        if(!!this.state.loggedUser.id) {
+            $.post('/user/flower', {user_id: this.state.loggedUser.id, flower_id: this.state.selectedFlower.id})
             .then(result => this.setState({
-                currentUser: result
+                loggedUser: result
             }))
         }
     }
@@ -109,10 +110,10 @@ class App extends React.Component {
                 price: prevState.price + cake.price
             }))
         }
-        if(!!this.state.currentUser.id) {
-            $.post('/user/cake', {user_id: this.state.currentUser.id, cake_id: this.state.selectedCake.id})
+        if(!!this.state.loggedUser.id) {
+            $.post('/user/cake', {user_id: this.state.loggedUser.id, cake_id: this.state.selectedCake.id})
             .then(result => this.setState({
-                currentUser: result
+                loggedUser: result
             }))
         }
     }
@@ -125,10 +126,10 @@ class App extends React.Component {
                 price: prevState.price + hall.price
             }))
         }
-        if(!!this.state.currentUser.id) {
-            $.post('/user/hall', {user_id: this.state.currentUser.id, hall_id: this.state.selectedHall.id})
+        if(!!this.state.loggedUser.id) {
+            $.post('/user/hall', {user_id: this.state.loggedUser.id, hall_id: this.state.selectedHall.id})
             .then(result => this.setState({
-                currentUser: result
+                loggedUser: result
             }))
         }
     }
@@ -141,10 +142,10 @@ class App extends React.Component {
                 price: prevState.price + music.price
             }))
         }
-        if(!!this.state.currentUser.id) {
-            $.post('/user/music', {user_id: this.state.currentUser.id, music_id: this.state.selectedMusic.id})
+        if(!!this.state.loggedUser.id) {
+            $.post('/user/music', {user_id: this.state.loggedUser.id, music_id: this.state.selectedMusic.id})
             .then(result => this.setState({
-                currentUser: result
+                loggedUser: result
             }))
         }
     }
@@ -228,7 +229,7 @@ class App extends React.Component {
                 <Music selectMusic= {this.selectMusic} changeView = {this.changeView} budget = {this.state.startWithBudget} 
                 balance = {this.state.budget - this.state.price} />
                 : this.state.view === 'login' ? 
-                <LogIn />
+                <LogIn setCurrentUser = {this.setCurrentUser} />
                 : this.state.view === 'aboutUs' ? 
                 <AboutUs />
                 :null}

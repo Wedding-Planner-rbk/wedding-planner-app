@@ -43,8 +43,8 @@ app.get("/cakes", getAllCakes);
 app.post("/package",findOnePackage);
 app.post("/login/user" ,findUser);
 app.post("/login/provider" ,findProvider);
-app.get("/pakages", getAllUsers);
-app.post("/pakages", addUser);
+app.get("/users", getAllUsers);
+app.post("/signup/user", addUser);
 
 
 
