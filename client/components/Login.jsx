@@ -17,6 +17,7 @@ class LogIn extends React.Component {
   }
   componentDidMount(){
     $.get("/users").then((results)=>{
+      // console.log(results)
       this.setState({
         users:results,
         username: "",
@@ -53,8 +54,8 @@ class LogIn extends React.Component {
     }
     const inputContact={
       width:"400px",
-      display: "flex;",
-      justifySelf: "center;"
+      display: "flex",
+      justifySelf: "center"
     }
     const formMain={
       width: "600px",
@@ -76,7 +77,7 @@ class LogIn extends React.Component {
                  
           <form onSubmit={(e)=>this.check(e)} style={formMain} >
 
-            <label> Email address</label><br></br>
+            <label>Username</label><br></br>
             <input
               style={inputContact}
               type="text"
@@ -94,7 +95,7 @@ class LogIn extends React.Component {
               onChange={(e)=>{this.setState({password:e.target.value})}}
             /><br></br>
              <br></br>
-            <input style={inputContact} type="submit" value="LogIn" onClick ={() => this.props.setCurrentUser(this.state.currentUser)} /><br></br>
+            <input className="btn btn-outline-secondary" type="submit" value="LogIn" onClick ={() => this.props.setCurrentUser(this.state.currentUser)} /><br></br>
           </form>
         </div>
         </div>

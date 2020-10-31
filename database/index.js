@@ -33,16 +33,6 @@ const getAllProviders = function() {
     })
   };
 
-  const selectProviders= function(speciality){
-    return new Promise((resolve, reject) =>{
-      const sql ="SELECT * FROM  users WHERE speciality = ?"
-      connection.query(sql, (err, data) =>{
-        if(err)
-        reject(err);
-        else resolve(data)
-      })
-    })
-  };
 
   const selectUser= function(id){
     return new Promise((resolve, reject) =>{
@@ -56,43 +46,6 @@ const getAllProviders = function() {
   };
 
 
-  const deleteUsersById = function (id){
-    return new Promise((resolve, reject) =>{
-      const sql = "DELETE FROM users WHERE id = ? "
-      connection.query(sql,[id],(err,data)=>{
-        if(err)
-       reject(err)
-       else
-        resolve (data)
-      })
-    })
-  }
-  
-  const deleteProvidereById = function (id){
-  return new Promise((resolve, reject) =>{
-    const sql = "DELETE FROM provider WHERE id = ? "
-    connection.query(sql,[id],(err,data)=>{
-      if(err)
-     reject(err)
-     else
-      resolve (data)
-    })
-  })
-}
-
-
-const deleteAllProvider = function (){
-  return new Promise((resolve, reject) =>{
-    const sql = "DELETE FROM provider WHERE id <> 0 "
-    connection.query(sql,(err,data)=>{
-      if(err)
-     reject(err)
-     else
-      resolve (data)
-    })
-  })
-}
-
 const addUser = function(user){
   return new Promise((resolve, reject) =>{
     const sql = "INSERT INTO users (firstName,lastName,address,zipCode,city,phone,username,email,password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
@@ -105,19 +58,6 @@ const addUser = function(user){
   })
 }
 
-
-const addProvider = function (firstName,speciality,username,email,password,provider_id){
-  return new Promise((resolve, reject) =>{
-    const sql = "INSERT INTO provider (userId,title,ImageUrl,blogs) VALUES (?, ?, ?, ?, ?, ?)"
-    connection.query(sql,[firstName,speciality,username,email,password,provider_id],(err,data) =>{
-      if(err){
-        reject(err)
-      }
-      resolve(data)
-    })
-  })
-}
-
 const getProviderById = function (id){
   return new Promise((resolve, reject) =>{
     const sql = "SELECT * FROM provider WHERE id = ? "
@@ -126,44 +66,6 @@ const getProviderById = function (id){
         reject(err)
       }
       resolve(data)
-    })
-  })
-}
-
-const deleteAllUsers = function (){
-  return new Promise((resolve, reject) =>{
-    const sql = "DELETE FROM users WHERE id <> 0 "
-    connection.query(sql,(err,data)=>{
-      if(err)
-     reject(err)
-     else
-      resolve (data)
-    })
-  })
-}
-
-
-const updateProvider = function (firstName,speciality,username,email,password,provider_id,id){
-  return new Promise((resolve, reject) =>{
-    const sql = "UPDATE provider SET userId = ?,title = ?,ImageUrl = ?,blogs = ? WHERE id =?"
-    connection.query(sql,[firstName,speciality,username,email,password,provider_id,id],(err,data) =>{
-      if(err){
-        reject(err)
-      }
-      resolve(data)
-    })
-  })
-}
-
-
-const updateUsers = function(firstName,lastName,address,zipCode,city,phone,username,email,password,flowers_id,cakes_id,music_id,hall_id){
-  return new Promise((resolve, reject) =>{
-    const sql = "UPDATE users SET firstname = ? lastname= ? address = ? zipCode = ? city = ? phone = ? username = ? email = ? password = ? flowers_id = ? cakes_id = ? music_id  ? hall_id = ?  WHERE id = ? "
-    connection.query(sql,[firstName,lastName,address,zipCode,city,phone,username,email,password,flowers_id,cakes_id,music_id,hall_id,id],(err,data) => {
-      if(err)
-      reject (err)
-       else
-      resolve (data)
     })
   })
 }
@@ -190,42 +92,6 @@ const selectFlower= function(id){
     })
   })
 };
-
-const deleteFlowerById = function (id){
-  return new Promise((resolve, reject) =>{
-    const sql = "DELETE FROM flowers WHERE id = ? "
-    connection.query(sql,[id],(err,data)=>{
-      if(err)
-     reject(err)
-     else
-      resolve (data)
-    })
-  })
-}
-
-const deleteAllFlowers = function (){
-  return new Promise((resolve, reject) =>{
-    const sql = "DELETE FROM flowers WHERE id <> 0 "
-    connection.query(sql,(err,data)=>{
-      if(err)
-     reject(err)
-     else
-      resolve (data)
-    })
-  })
-}
-
-const updateFlowers = function(name,imageUrl,description,flowers_id,provider_id,id){
-  return new Promise((resolve, reject) =>{
-    const sql = "UPDATE flowers SET name = ? imageUrl= ? description = ? flowers_id = ? provider_id = ? WHERE id = ? "
-    connection.query(sql,[name,imageUrl,description,flowers_id,provider_id,id],(err,data) => {
-      if(err)
-      reject (err)
-       else
-      resolve (data)
-    })
-  })
-}
 
 const addFlower = function (name,imageUrl,description,flowers_id,provider_id){
   return new Promise((resolve, reject) =>{
@@ -262,41 +128,6 @@ const selectCake= function(id){
   })
 };
 
-const deleteCakeById = function (id){
-  return new Promise((resolve, reject) =>{
-    const sql = "DELETE FROM cakes WHERE id = ? "
-    connection.query(sql,[id],(err,data)=>{
-      if(err)
-     reject(err)
-     else
-      resolve (data)
-    })
-  })
-}
-
-const deleteAllCakes = function (){
-  return new Promise((resolve, reject) =>{
-    const sql = "DELETE FROM cakes WHERE id <> 0 "
-    connection.query(sql,(err,data)=>{
-      if(err)
-     reject(err)
-     else
-      resolve (data)
-    })
-  })
-}
-
-const updateCakes = function(name,imageUrl,description,cakes_id,provider_id,id){
-  return new Promise((resolve, reject) =>{
-    const sql = "UPDATE cakes SET name = ? imageUrl= ? description = ? cakes_id = ? provider_id = ? WHERE id = ? "
-    connection.query(sql,[name,imageUrl,description,cakes_id,provider_id,id],(err,data) => {
-      if(err)
-      reject (err)
-       else
-      resolve (data)
-    })
-  })
-}
 
 const addCake = function (name,imageUrl,description,cakes_id,provider_id){
   return new Promise((resolve, reject) =>{
@@ -334,42 +165,6 @@ const selectMusic= function(id){
   })
 };
 
-const deleteMusicById = function (id){
-  return new Promise((resolve, reject) =>{
-    const sql = "DELETE FROM music WHERE id = ? "
-    connection.query(sql,[id],(err,data)=>{
-      if(err)
-     reject(err)
-     else
-      resolve (data)
-    })
-  })
-}
-
-const deleteAllMusic = function (){
-  return new Promise((resolve, reject) =>{
-    const sql = "DELETE FROM music WHERE id <> 0 "
-    connection.query(sql,(err,data)=>{
-      if(err)
-     reject(err)
-     else
-      resolve (data)
-    })
-  })
-}
-
-const updateMusic = function(name,imageUrl,description,music_id,provider_id,id){
-  return new Promise((resolve, reject) =>{
-    const sql = "UPDATE music SET name = ? imageUrl= ? description = ? music_id = ? provider_id = ? WHERE id = ? "
-    connection.query(sql,[name,imageUrl,description,music_id,provider_id,id],(err,data) => {
-      if(err)
-      reject (err)
-       else
-      resolve (data)
-    })
-  })
-}
-
 const addMusic = function (name,imageUrl,description,music_id,provider_id){
   return new Promise((resolve, reject) =>{
     const sql = "INSERT INTO music (name,imageUrl,description,music_id,provider_id) VALUES (?, ?, ?, ?, ?)"
@@ -404,42 +199,6 @@ const selectHall= function(id){
     })
   })
 };
-
-const deleteHallById = function (id){
-  return new Promise((resolve, reject) =>{
-    const sql = "DELETE FROM hall WHERE id = ? "
-    connection.query(sql,[id],(err,data)=>{
-      if(err)
-     reject(err)
-     else
-      resolve (data)
-    })
-  })
-}
-
-const deleteAllHalls = function (){
-  return new Promise((resolve, reject) =>{
-    const sql = "DELETE FROM hall WHERE id <> 0 "
-    connection.query(sql,(err,data)=>{
-      if(err)
-     reject(err)
-     else
-      resolve (data)
-    })
-  })
-}
-
-const updateHalls = function(name,imageUrl,description,hall_id,provider_id,id){
-  return new Promise((resolve, reject) =>{
-    const sql = "UPDATE hall SET name = ? imageUrl= ? description = ? hall_id = ? provider_id = ? WHERE id = ? "
-    connection.query(sql,[name,imageUrl,description,hall_id,provider_id,id],(err,data) => {
-      if(err)
-      reject (err)
-       else
-      resolve (data)
-    })
-  })
-}
 
 const addHall = function (name,imageUrl,description,cakes_id,provider_id){
   return new Promise((resolve, reject) =>{
@@ -488,29 +247,6 @@ const deletePackageById = function (id){
   })
 }
 
-const deleteAllPackages = function (){
-  return new Promise((resolve, reject) =>{
-    const sql = "DELETE FROM packages WHERE id <> 0 "
-    connection.query(sql,(err,data)=>{
-      if(err)
-     reject(err)
-     else
-      resolve (data)
-    })
-  })
-}
-
-const updatePackage = function(hall_id,flowers_id,cakes_id,music_id,name, description, price, imageUrl, id){
-  return new Promise((resolve, reject) =>{
-    const sql = "UPDATE packages SET hall_id = ? flowers_id= ? cakes_id = ? music_id = ? name = ? description = ? price = ? imageUrl = ?  WHERE id = ? "
-    connection.query(sql,[hall_id,flowers_id,cakes_id,music_id,name, description, price, imageUrl, id],(err,data) => {
-      if(err)
-      reject (err)
-       else
-      resolve (data)
-    })
-  })
-}
 
 const addPackage = function (hall_id,flowers_id,cakes_id,music_id,name, description, price, imageUrl, id){
   return new Promise((resolve, reject) =>{
@@ -530,45 +266,23 @@ const addPackage = function (hall_id,flowers_id,cakes_id,music_id,name, descript
 module.exports = {
     getAllUsers,
     getAllProviders,
-    selectProviders,
-    updateUsers,
     selectUser,
-    deleteUsersById,
-    deleteProvidereById,
-    deleteAllProvider,
     addUser,
-    addProvider,
     getProviderById,
-    deleteAllUsers,
-    updateProvider,
     getAllFlowers,
     selectFlower,
-    deleteFlowerById,
-    deleteAllFlowers,
-    updateFlowers,
     addFlower,
     getAllCakes,
     selectCake,
-    deleteCakeById,
-    deleteAllCakes,
-    updateCakes,
     addCake,
     getAllMusic,
     selectMusic,
-    deleteMusicById,
-    deleteAllMusic,
-    updateMusic,
     addMusic,
     getAllhalls,
     selectHall,
-    deleteHallById,
-    deleteAllHalls,
-    updateHalls,
     addHall,
     getAllPackages,
     selectPackage,
     deletePackageById,
-    deleteAllPackages,
-    updatePackage,
     addPackage,
     };
