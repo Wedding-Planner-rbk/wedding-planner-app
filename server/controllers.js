@@ -78,5 +78,8 @@ exports.getAllUsers =(req, res)=>{
 
 //adding/inserting a new user to the users table 
 exports.addUser =(req, res)=>{
-  db.addUser().then(data => {res.status(200).json(data) })
+  var user = req.body
+  db.addUser(user).then(data => {
+    console.log(data)
+    res.status(200).send('success') })
    .catch(error => res.status(500).send(error))}
