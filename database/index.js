@@ -93,10 +93,10 @@ const deleteAllProvider = function (){
   })
 }
 
-const addUser = function(firstName,lastName,address,zipCode,city,phone,username,email,password,flowers_id,cakes_id,music_id,hall_id){
+const addUser = function(user){
   return new Promise((resolve, reject) =>{
-    const sql = "INSERT INTO users (firstName,lastName,address,zipCode,city,phone,username,email,password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,? ,? ,? ,?)"
-    connection.query(sql,[firstName,lastName,address,zipCode,city,phone,username,email,password,flowers_id,cakes_id,music_id,hall_id],(err,data) =>{
+    const sql = "INSERT INTO users (firstName,lastName,address,zipCode,city,phone,username,email,password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
+    connection.query(sql,[user.firstName,user.lastName,user.address,user.zipCode,user.city,user.phone,user.username,user.email,user.password],(err,data) =>{
       if(err)
       reject(err)
       else

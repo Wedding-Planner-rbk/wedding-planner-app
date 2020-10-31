@@ -1,11 +1,12 @@
 import React from "react";
 import $ from 'jquery';
 import SignUp from "./SignUp.jsx";
+import Profile from "./Profile.jsx"
 
 class LogIn extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
+    this.state = { // states used in the mechanism of comparison with the data in the database
       users:[],
       username:"",
       password:"",
@@ -15,9 +16,9 @@ class LogIn extends React.Component {
     this.check=this.check.bind(this)
   }
   componentDidMount(){
-    $.get("YOUR URL ").then((res)=>{
+    $.get("/users").then((results)=>{
       this.setState({
-        users:res.data,
+        users:results,
         username: "",
         password: "",
         pass:""
@@ -28,23 +29,20 @@ class LogIn extends React.Component {
     e.preventDefault();
     const usernameList = this.state.users.map((element)=>
     element.username ) ;
-    console.log(usernameList)
+    // console.log(usernameList)
     const passwordList = this.state.users.map((element)=>
     element.password );
 
     
-/*     const idList = this.state.users.map((element)=>
-    element.id); */
-    
+// The following is the most important part of this component: using a comparison between the input and the saved variables (states) to decide where to go next!    
     if(usernameList.indexOf(this.state.username) === -1){
       //console.log(usernameList.indexOf(this.state.username))
       alert("You should have account first , please sign up")
-      this.setState({pass:this.state.pass = "signup"})
+      this.setState({pass: "signup"})
     }else if(usernameList.indexOf(this.state.username) !== -1 && passwordList[usernameList.indexOf(this.state.username)] !== this.state.password ){ 
       alert("Your password is incorrect")
     }else if(usernameList.indexOf(this.state.username) !== -1 && passwordList[usernameList.indexOf(this.state.username)] === this.state.password ){
-      this.setState({pass:this.state.pass= "Profile", currentUser: this.state.users[usernameList.indexOf(this.state.username)]}) 
-      //  user_id:this.state.user_id = idList[usernameList.indexOf(this.state.userName)]})
+      this.setState({pass: "Profile", currentUser: this.state.users[usernameList.indexOf(this.state.username)]})
     } 
   }
   render() {
@@ -56,19 +54,17 @@ class LogIn extends React.Component {
               type="text"
               name="name"
               placeholder="UserName "
-              value={this.state.userName}
-              onChange={(e)=>{this.setState({userName:e.target.value})}}
+              onChange={(e)=>{this.setState({username:e.target.value})}}
             /><br></br>
           
             <input
               type="password"
               name="password"
               placeholder="password "
-              value={this.state.password}
               onChange={(e)=>{this.setState({password:e.target.value})}}
             /><br></br>
   
-            <input type="submit" value="Log In" /><br></br>
+            <input type="submit" value="LogIn" onClick ={() => this.props.setCurrentUser(this.state.currentUser)} /><br></br>
           </form>
         </div>
       )
@@ -78,10 +74,9 @@ class LogIn extends React.Component {
           <SignUp/>
         </div>
       )
-    }else if(this.state.pass === "Profile"){
+    }else if(this.state.pass === "Profile" || !!this.state.currentUser.id){
     return (
       <div>
-        {/* could you please put the name of the right component */}
           <Profile user={this.state.currentUser }/>
       </div>
     )
