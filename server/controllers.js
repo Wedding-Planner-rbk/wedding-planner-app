@@ -69,6 +69,17 @@ exports.findProvider = (req, res) => {
   
 
 }
-        
-  
+ //fetching all the data from the users table       
+exports.getAllUsers =(req, res)=>{
+  db.getAllUsers().then(data => {res.status(200).json(data) })
+   .catch(error => res.status(500).send(error))
 
+}
+
+//adding/inserting a new user to the users table 
+exports.addUser =(req, res)=>{
+  var user = req.body
+  db.addUser(user).then(data => {
+    console.log(data)
+    res.status(200).send('success') })
+   .catch(error => res.status(500).send(error))}

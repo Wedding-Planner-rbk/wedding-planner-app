@@ -125,7 +125,7 @@ class App extends React.Component {
             <div>
                 <div className="navbar navbar-light nav">
                     <div className= "container-fluid">
-                    <span className="navbar-brand" style={{color: '#FFE484'}}>The Velvet Box</span>
+                    <span className="navbar-brand" style={{color: '#32e0c4'}}>The Velvet Box</span>
                     <span className='nav-item link'
                     onClick={() => this.changeView('home')}>
                         Home
@@ -151,9 +151,12 @@ class App extends React.Component {
                 </div>
                 <div className='body'>
                 {this.state.view === 'home' ? <div>
-              <h1> Wedding Planning</h1> 
+                <div className='espace'> </div>
+                <div className='description'>
+                <h1> Wedding Planner</h1> 
 
-     <h6> Planning a wedding involves endless details, deadlines, family drama, and far too often enough stress to make you want to just elope. Use our planning checklist, read our budgeting tips, and access our wedding planner to help you pull it all together.</h6>
+     <h4> Planning a wedding involves endless details, deadlines, family drama, and far too often enough stress to make you want to just elope. Use our planning checklist, read our budgeting tips, and access our wedding planner to help you pull it all together.</h4>
+     </div>
                     <div className='col-5'>
                         <div className="input-group mb-3">
                             <input type="number" className="form-control" placeholder="If you want to start with a fixed Budget, enter yours"
@@ -174,8 +177,7 @@ class App extends React.Component {
                             <h4>Type: {pack.name}</h4>
                             <span>Price: {pack.price} DT</span>
                         </div>)}
-                    </div>
-                    <SocialFollow /> 
+                    </div><SocialFollow /> 
                     </div>
                     
                 </div> 

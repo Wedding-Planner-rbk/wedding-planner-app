@@ -23,10 +23,11 @@ class Pack extends React.Component {
     render() {
    
         return (
-        <div>
-            <h1> {this.props.pack.name} </h1>
-           
+        <div className= "description">
+            <div className='espace'> </div>
+             <h1> {this.props.pack.name} </h1>
             <span> {this.props.pack.description}</span>
+         
             <div className="container">
                     <div className="row">
                     <h6>In this package you can find :</h6>
@@ -40,7 +41,7 @@ class Pack extends React.Component {
                            </div> 
                         </div>)}
                     </div>
-                    <button className="btn btn-primary" style={{ heigth :'50px' ,width:'200px', margin:'20px',marginLeft:'450px'}} > Book Now  </button>
+                    <button className="btn btn-primary" style={{ heigth :'50px' ,width:'200px', margin:'20px',marginLeft:'225px'}} > Book Now  </button>
                     </div>
 
           </div>

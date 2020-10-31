@@ -8,7 +8,7 @@ class AboutUs extends React.Component {
       //  style :{{ backgroundImage:`url(https://image.shutterstock.com/image-photo/vintage-crown-over-dark-royal-260nw-1653121378.jpg)`}}
         return (
           
-            <div className='abtus'>
+            <div className='container'>
             <div ><div className='espace'> </div>
             <h4> Who we are </h4>
             <h6>The wedding planner online that'll do anything for love.</h6>

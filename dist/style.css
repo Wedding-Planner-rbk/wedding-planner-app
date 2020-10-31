@@ -1,5 +1,5 @@
 .body {
-   
+    font-family: "Times New Roman";
     background-color: antiquewhite;
 }
 .body h6{
@@ -48,4 +48,21 @@
   }
 .espace{
   height: 20px;
+}
+.container{
+  max-width: 720px;
+  height: 100%;
+}
+.form-control{
+margin-left: 20px ;
+}
+.description{
+  margin-left: 20px ;
+}
+.description h4{
+  color : #51adcf
+}
+
+h1{
+  color: #7952B3;
 }
