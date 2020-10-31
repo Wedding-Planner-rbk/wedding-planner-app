@@ -6,6 +6,7 @@ class SignUp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      // Intializing states based on the databse schema agreed upon with the group
       users: [],
       firstName: "",
       lastName:"",
@@ -23,6 +24,7 @@ class SignUp extends React.Component {
   }
   add(e) {
     console.log("added");
+    // add is used to allocate every state to an input, summarizing everything in the object called newUser
       e.preventDefault()
       const newUser = {
         firstName: this.state.firstName,
@@ -33,11 +35,11 @@ class SignUp extends React.Component {
         phone: this.state.phone,
         username: this.state.username,
         email:this.state.email,
-        name: this.state.name,
         password:this.state.password,
       }
-    $.post("PUT YOUR URL",newUser)
-    .then(res => console.log(res.data));
+    $.post("signup/user",newUser)
+    // posting is necessary to complete "the add" and reinitializing the states to be able to fill them again
+  
         this.setState({
           firstName: "",
           lastName:"",
@@ -48,15 +50,41 @@ class SignUp extends React.Component {
           username: "",
           password: "",
           email:"",
-          check:"Login"
+          check:"Login" // the check is a variable that will decide the next step following the multiple forms, a value "login" of a check will lead to a navigation to the "next" compnent
         })
   }
-  render() {
-    if (this.state.check === "") {
+  render() 
+  
+  {
+
+      const formContact={
+        display:'flex',
+        justifyContent:'center'
+      }
+      const inputContact={
+        width:"300px"
+      }
+      const formMain={
+        width: "420px",
+        border: "2px solid #7952B3",
+        padding: "50px", 
+        margin:'auto'
+      }
+    
+  
+
+    if (this.state.check === "") // this is the initial check condition
+     { 
       return (
-        <div className=" SignInForm ">
+        
+        <div className='container'>
+             <div style ={{padding: '20px', marginLeft: '255px'}}> 
+              <h1> Sign up Form </h1> 
+           </div>
+        <div className=" SignInForm " style={formMain}>
           <form onSubmit={(e) => this.add(e)}>
             <input
+              style={inputContact}
               type="text"
               name="firstName"
               placeholder="Your first name "
@@ -68,6 +96,7 @@ class SignUp extends React.Component {
             <br></br>
 
             <input
+              style={inputContact}
               type="text"
               name="lastName"
               placeholder="Your lastName name "
@@ -79,6 +108,7 @@ class SignUp extends React.Component {
             <br></br>
 
             <input
+             style={inputContact}
               type="text"
               name="address"
               placeholder="Your address "
@@ -90,7 +120,8 @@ class SignUp extends React.Component {
             <br></br>
 
             <input
-              type="text"
+              style={inputContact}
+              type="number"
               name="zipCode"
               placeholder="zipCode "
               value={this.state.zipCode}
@@ -101,6 +132,7 @@ class SignUp extends React.Component {
             <br></br>
 
             <input
+              style={inputContact}
               type="text"
               name="city"
               placeholder="Your City "
@@ -112,7 +144,8 @@ class SignUp extends React.Component {
             <br></br>
 
             <input
-              type="text"
+              style={inputContact}
+              type="number"
               name="Phone"
               placeholder="Your Phone "
               value={this.state.phone}
@@ -123,17 +156,7 @@ class SignUp extends React.Component {
             <br></br>
 
             <input
-              type="text"
-              name="name"
-              placeholder="Your name "
-              value={this.state.name}
-              onChange={(e) => {
-                this.setState({ name: e.target.value });
-              }}
-            />
-            <br></br>
-
-            <input
+              style={inputContact}
               type="text"
               name="username"
               placeholder="Your username "
@@ -145,6 +168,7 @@ class SignUp extends React.Component {
             <br></br>
 
             <input
+             style={inputContact}
               type="email"
               name="email"
               placeholder="Your email"
@@ -156,6 +180,7 @@ class SignUp extends React.Component {
             <br></br>
 
             <input
+             style={inputContact}
               type="password"
               name="password"
               placeholder="Your password "
@@ -165,12 +190,14 @@ class SignUp extends React.Component {
               }}
             />
             <br></br>
-            <input type="submit" value="SignUp" />
+            <br></br>
+            <input type="submit" value="SignUp"  style={inputContact} />
             <br></br>
           </form>
         </div>
-      )
-    } else {
+        //multiple forms to add the states
+        </div> )
+    } else { // the second check condition
       return (
         <div>
           <LogIn/>

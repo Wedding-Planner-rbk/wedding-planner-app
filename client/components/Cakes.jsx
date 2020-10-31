@@ -9,12 +9,17 @@ class Cakes extends Component {
     }
     componentDidMount() {
         $.get('/cakes').then(results => {
-                    console.log(results)
-                    this.setState({
-                        weddingCakes:results,
-                    })
+            // console.log(results)
+            if(this.props.budget) {
+                this.setState({
+                    weddingCakes: results.filter(cake => cake.price <= this.props.balance)
                 })
-            
+            } else {
+                this.setState({
+                        weddingCakes:results,
+                })
+            } 
+        }) 
     }
     render() {
         return (
