@@ -32,8 +32,8 @@ class Pack extends React.Component {
                     <div className="row">
                     <h6>In this package you can find :</h6>
                         {this.state.products.map((product, index) => 
-                    <div className="card" style={{width: "16.5rem"}}>    
-                            <div key={index} className="col-sm">
+                    <div key={index} className="card" style={{width: "16.5rem"}}>    
+                            <div className="col-sm">
                             
                             <img src={product.imageUrl} className="img-thumbnail previewImage" />
                             <h4>Type: {product.name}</h4>

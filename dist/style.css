@@ -1,4 +1,7 @@
-.body {
+html {
+  background-color: antiquewhite;
+}
+.body{
     font-family: "Times New Roman";
     background-color: antiquewhite;
 }
@@ -50,7 +53,7 @@
   height: 20px;
 }
 .container{
-  max-width: 720px;
+  /* max-width: 720px; */
   height: 100%;
 }
 .form-control{

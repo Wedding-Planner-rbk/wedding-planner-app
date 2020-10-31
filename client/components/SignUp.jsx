@@ -191,12 +191,11 @@ class SignUp extends React.Component {
             />
             <br></br>
             <br></br>
-            <input type="submit" value="SignUp"  style={inputContact} />
+            <input className="btn btn-outline-secondary" type="submit" value="SignUp" />
             <br></br>
           </form>
         </div>
-        //multiple forms to add the states
-        </div> )
+        </div> )//multiple forms to add the states
     } else { // the second check condition
       return (
         <div>

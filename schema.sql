@@ -24,7 +24,7 @@ CREATE TABLE users (
 
 INSERT into users ( firstName, lastName, address, zipCode, city, phone, username,email, password, flowers_id,cakes_id,music_id,hall_id) VALUES ("Haykel","Hadj Salem", "Sousse", 2002,"Khzema",22555666,"Hayha","haykel@gmail.com","12345",NULL,NULL,NULL,NULL);
 INSERT into users ( firstName, lastName, address, zipCode, city, phone, username,email, password, flowers_id,cakes_id,music_id,hall_id) VALUES ("Nadim","Barkati", "Tunis", 2001,"Bardo",20555666,"Naba","nadim@gmail.com","123456",NULL,NULL,NULL,NULL);
-INSERT into users ( firstName, lastName, address, zipCode, city, phone, username,email, password, flowers_id,cakes_id,music_id,hall_id) VALUES ("Chayma","Ben Thabet", "Nabeul", 2003,"Mrezga",23564789,"Chabe","chayma@gmail.com","25014",NULL,NULL,NULL,NULL);
+INSERT into users ( firstName, lastName, address, zipCode, city, phone, username,email, password, flowers_id,cakes_id,music_id,hall_id) VALUES ("Chayma","Ben Thabet", "Nabeul", 2003,"Mrezga",23564789,"Chabe","chayma@gmail.com","25014",1,2,3,4);
 INSERT into users ( firstName, lastName, address, zipCode, city, phone, username,email, password, flowers_id,cakes_id,music_id,hall_id) VALUES ("Dhia","Fattoum", "Gafsa", 2005,"Ville",24589647,"Dhifa","dhia@gmail.com","20546",NULL,NULL,NULL,NULL);
 INSERT into users ( firstName, lastName, address, zipCode, city, phone, username,email, password, flowers_id,cakes_id,music_id,hall_id) VALUES ("Issam","Ben Mansour", "Sfax", 2004,"Gremda",20145365,"Isbe","issam@gmail.com","25631",NULL,NULL,NULL,NULL);
 INSERT into users ( firstName, lastName, address, zipCode, city, phone, username,email, password, flowers_id,cakes_id,music_id,hall_id) VALUES ("Hanen","loulou", "Gabes", 2022,"Hamma",23145678,"halou","hanen@gmail.com","12345678",NULL,NULL,NULL,NULL);
@@ -62,22 +62,22 @@ CREATE TABLE flowers (
    PRIMARY KEY (id)
 );
 
-INSERT into flowers (name,imageUrl,description,price,provider_id) VALUES ("Pin on Blush pink wedding","https://i.pinimg.com/originals/9e/96/50/9e9650b319b4438b2a14bd2fffd0f2e2.png","Walk down the aisle with the perfect bridal bouquet",15000,20);
+INSERT into flowers (name,imageUrl,description,price,provider_id) VALUES ("Pin on Blush pink wedding","https://i.pinimg.com/originals/9e/96/50/9e9650b319b4438b2a14bd2fffd0f2e2.png","Walk down the aisle with the perfect bridal bouquet",150,20);
 
 INSERT into flowers (name,imageUrl,description,price,provider_id) VALUES ("Spring Colors","https://i.pinimg.com/736x/9c/a0/64/9ca0648cc7e85f4bed3450326f1dd685--spring-wedding-bouquets-vintage-wedding-bouquets.jpg
-","Get a polished look with our dashing boutonnieres.",20000,20);
+","Get a polished look with our dashing boutonnieres.",200,20);
 
-INSERT into flowers (name,imageUrl,description,price,provider_id) VALUES ("Bridesmaid Bouquets","https://i1.wp.com/www.perfete.com/wp-content/uploads/2016/12/designs-by-oochay-bouquet-best-of-aisle-perfect.jpg?resize=600%2C900","Complementing bridesmaid bouquets for your wedding day.",300000,20);
+INSERT into flowers (name,imageUrl,description,price,provider_id) VALUES ("Bridesmaid Bouquets","https://i1.wp.com/www.perfete.com/wp-content/uploads/2016/12/designs-by-oochay-bouquet-best-of-aisle-perfect.jpg?resize=600%2C900","Complementing bridesmaid bouquets for your wedding day.",300,20);
 
-INSERT into flowers (name,imageUrl,description,price,provider_id) VALUES ("Corsages","https://img.everafterguide.net/s/upload/images/2016/05/9b223f80105c152b47cda79dfc57405a.jpg","Gorgeous floral accessories for the special women in your life.",400000,20);
+INSERT into flowers (name,imageUrl,description,price,provider_id) VALUES ("Corsages","https://img.everafterguide.net/s/upload/images/2016/05/9b223f80105c152b47cda79dfc57405a.jpg","Gorgeous floral accessories for the special women in your life.",280,20);
 
-INSERT into flowers (name,imageUrl,description,price,provider_id) VALUES ("Arrangements","https://i2.wp.com/yorkshiredalesflowers.co.uk/wp-content/uploads/2016/06/YDFC-British-34.jpg?fit=668%2C1000&ssl","Decorate your  wedding with amazing floral.",450000,20);
+INSERT into flowers (name,imageUrl,description,price,provider_id) VALUES ("Arrangements","https://i2.wp.com/yorkshiredalesflowers.co.uk/wp-content/uploads/2016/06/YDFC-British-34.jpg?fit=668%2C1000&ssl","Decorate your  wedding with amazing floral.",320,20);
 
-INSERT into flowers (name,imageUrl,description,price,provider_id) VALUES ("White and greenery","https://i2.wp.com/onideal.com/wp-content/uploads/2020/01/8-diy-wedding-bouquets-005.jpg?fit=600%2C900&ssl=1&w=640","Looking for something sweet? Our Apple Cider Bouquet is the perfect pick. Even if you can't make it out to the orchard with your loved ones, add some warmth to their day with this stunning arrangement.",55000,20);
+INSERT into flowers (name,imageUrl,description,price,provider_id) VALUES ("White and greenery","https://i2.wp.com/onideal.com/wp-content/uploads/2020/01/8-diy-wedding-bouquets-005.jpg?fit=600%2C900&ssl=1&w=640","Looking for something sweet? Our Apple Cider Bouquet is the perfect pick. Even if you can't make it out to the orchard with your loved ones, add some warmth to their day with this stunning arrangement.",400,20);
 
-INSERT into flowers (name,imageUrl,description,price,provider_id) VALUES ("Sweet Peas","https://i0.wp.com/artclick.gr/wp-content/uploads/2018/01/IMG_2017-1.jpg?fit=600%2C900&ssl=1"," To us, sweet peas are some of the most romantic flowers. They typically feature delicate petals and stems, so a bit of care is required.",750000,20);
+INSERT into flowers (name,imageUrl,description,price,provider_id) VALUES ("Sweet Peas","https://i0.wp.com/artclick.gr/wp-content/uploads/2018/01/IMG_2017-1.jpg?fit=600%2C900&ssl=1"," To us, sweet peas are some of the most romantic flowers. They typically feature delicate petals and stems, so a bit of care is required.",350,20);
 
-INSERT into flowers (name,imageUrl,description,price,provider_id) VALUES ("Camellias","https://i.pinimg.com/originals/bf/1d/5c/bf1d5c697043cc861a97065535de36b5.jpg","Camellias are one of winter's gems. Their petals are layered,",560000,20);
+INSERT into flowers (name,imageUrl,description,price,provider_id) VALUES ("Camellias","https://i.pinimg.com/originals/bf/1d/5c/bf1d5c697043cc861a97065535de36b5.jpg","Camellias are one of winter's gems. Their petals are layered,",260,20);
 
 CREATE TABLE cakes (
   id int NOT NULL AUTO_INCREMENT,
@@ -96,7 +96,7 @@ INSERT into cakes (name,imageUrl,description,price,provider_id) VALUES ("Divine 
 ","Elegant cake for small wedding! The single-tier divine, gorgeous wedding cake serves 8-10 people and is decorated with exquisite icing dots or fancy icing swirls, beautiful ribbon and fresh roses. ",2830,30);
 
 INSERT into cakes (name,imageUrl,description,price,provider_id) VALUES ("Splendide Cupcake","https://images.unsplash.com/photo-1598295971175-d4ec5d2ff678?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80
-","Spread the cheer with these scrumptious treats! Enjoy everything you love about wedding cakes, but in cupcake form. Splendid Cupcakes have basic décor with basic icing in your choice of color, and up to 3 flavors for 24 cupcakes. Rosette style frost and sprinkles upon request. ",30000,30);
+","Spread the cheer with these scrumptious treats! Enjoy everything you love about wedding cakes, but in cupcake form. Splendid Cupcakes have basic décor with basic icing in your choice of color, and up to 3 flavors for 24 cupcakes. Rosette style frost and sprinkles upon request. ",3000,30);
 
 INSERT into cakes (name,imageUrl,description,price,provider_id) VALUES ("Divine Cupcake","https://images.unsplash.com/photo-1559373098-e1caaccae791?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80
 ","Sweets for the sweethearts on their wedding day. Whether you want to treat yourselves or a couple of your closest friends and family, nothing says “I Love You” like a box of yummy cupcakes.",1560,30);
@@ -120,14 +120,14 @@ CREATE TABLE music (
 
 INSERT into music (name,imageUrl,description,price,provider_id) VALUES ("Troupe les Emirs","https://marryme.tn/wp-content/uploads/2016/05/marryme_emirs94.jpg","Elegance, chic, virtuosity and refined taste are certainly our undeniable qualities. Troupe Les Emirs guarantees you a successful animation of your ceremonies thanks to a repertoire of varied modern and traditional music, and the participation of the greatest Tunisian and oriental stars.",9000,40);
 
-INSERT into music (name,imageUrl,description,price,provider_id) VALUES ("Troupe Boudinar","https://lh3.googleusercontent.com/proxy/96iKXbno8fpH63lMqD4QzPzlJufO131tpEijaWvmFoZdfUMVaVvokdpjNLU4Xmj7DZBA5N97Qyalvgg4abPxtp2-lD0Wpip_5RFdsw4kxc1FDIPsdyEqzvmC","The Boudinar troupe by Riadh Boudinar enlivens your evenings with oriental and traditional music and offers you the best stars of Tunisian song.",15000,40);
+INSERT into music (name,imageUrl,description,price,provider_id) VALUES ("Troupe Boudinar","https://lh3.googleusercontent.com/proxy/zORdJqm3Y-bqICAKOGHhHp_2ZzhTv8WpgtNFnN3yhvmo774K7969QtYscdhEnPEnb7XPb54oyHD5JsBIW4a_oCFSTVPnS8R-6sx2b7vbX7x1lrTmzwkdad8m","The Boudinar troupe by Riadh Boudinar enlivens your evenings with oriental and traditional music and offers you the best stars of Tunisian song.",15000,40);
 
 INSERT into music (name,imageUrl,description,price,provider_id) VALUES ("Live Organ Music","https://www.hardrockcafe.com/location/port-el-kantaoui/files/5471/Manel_Amara_1.jpg","Fill the air with a traditional touch! Our live organist will play the traditional instrumental wedding music during your ceremony. Please contact your Personal Wedding Planner to make sure the organist is available for your ceremony. Not available in the Gazebo location.",12000,40);
 
 INSERT into music (name,imageUrl,description,price,provider_id) VALUES ("Live Guitarist Music","https://upload.wikimedia.org/wikipedia/commons/0/04/Myrath_en_Madrid.jpg","Let our guitarist create a romantic setting for your special day. Performing traditional and contemporary wedding processional music, the sweet melodies from the guitar is sure to please you and your guests. Please contact your Personal Wedding Planner to make sure the guitarist is available for your ceremony.",18000,40);
 INSERT into music (name,imageUrl,description,price,provider_id) VALUES ("CITY SOUNDS","https://www.entertainment-nation.co.uk/act_media/451/gallery/city-sounds1101914290.jpg","City Sounds are a luxury, contemporary pop, dance and soul band made up of some of the most exciting professional musicians. Fronted by an outstanding female vocalist, these high-intensity performers are renowned for their energetic stage presence and their extraordinary musical talent; it's no wonder they pack out dance floors wherever they perform!",16000,40);
 INSERT into music (name,imageUrl,description,price,provider_id) VALUES ("CLIQUE","https://www.entertainment-nation.co.uk/act_media/923/gallery/clique1599676826.jpg","Ready to send your guests into a dance floor frenzy, Clique supply a show like no other! Regarded as one of the most exciting and professional function bands  right now, Clique are a premier choice for your occasion.",14000,40);
-INSERT into music (name,imageUrl,description,price,provider_id) VALUES ("Troupe Ben Rhouma","https://lh3.googleusercontent.com/proxy/-l9LaGR4P6BfjGdk_jWlPRzjmh0FFsN-ODM3cXX9IfVAQ_4XyfKgoJxLtUtK4UNet3tfgdIdIbt2Fv1PgQCnbrUJwCqRhaTbp7qbDIVwow4DH2yk0U-tHd9xaz4","Organization of wedding parties with the Musical Troupe Mohamed Ben Rhouma Aweda, Soulamia, Daklet Laaroussa, Egyptian Zaffa, Syrian Zaffa, Show Show, Organist Singer",7500,40);
+INSERT into music (name,imageUrl,description,price,provider_id) VALUES ("Troupe Ben Rhouma","https://1.bp.blogspot.com/-W3wPRJHCEEk/V9KiS6KTulI/AAAAAAAACyI/g4TdVOQyKTgq-e6nFjYgu26HVdzDEX6wwCLcB/s1600/12004090_513119625515679_3699832181586379979_n.jpg","Organization of wedding parties with the Musical Troupe Mohamed Ben Rhouma Aweda, Soulamia, Daklet Laaroussa, Egyptian Zaffa, Syrian Zaffa, Show Show, Organist Singer",7500,40);
 INSERT into music (name,imageUrl,description,price,provider_id) VALUES ("Troupe El Heni","https://1.bp.blogspot.com/-Unjwex41RHQ/VdeyGH7CnCI/AAAAAAAAHPs/WWgfg17dMTg/s1600/Elheni%2B%25282%2529.jpg","One Agency with several services. Our job and our mission on a daily basis. El Heni, is at your service for your events, events or organizations. It guarantees you, punctuality, professionalism and atmosphere with a plethora of musicians and professional singers.",11000,40);
 
 
@@ -178,7 +178,7 @@ INSERT into packages (hall_id,flowers_id,cakes_id,music_id, name , description,p
 
 INSERT into packages (hall_id,flowers_id,cakes_id,music_id, name , description,price,image_url) VALUES (2,2,2,2,"Great","Promise forever with this vow renewal package for 6 guests.",10000,'https://www.mariage.com/wp-content/uploads/2016/04/une-mariage-papiers.jpg');
 
-INSERT into packages (hall_id,flowers_id,cakes_id,music_id, name , description,price,image_url) VALUES (3,3,3,3, "Fabulous", "Tie the knot in a romantic wedding ceremony, with flowers, photos.", 1200,'https://lh3.googleusercontent.com/proxy/iHxIqioRHnsxDvKAUpLVCZOFx-tCZVQ243FpBhTRnl3wgh-OdoJrqGWU8IBJM6RL_ikFhB2chnIfXzqw5EDM-kgPlpnhKhSGG0Jz0bpyIzwuF4CgM1zVvfoJWJREh4z9spExM7_Vyn9qYg');
+INSERT into packages (hall_id,flowers_id,cakes_id,music_id, name , description,price,image_url) VALUES (3,3,3,3, "Fabulous", "Tie the knot in a romantic wedding ceremony, with flowers, photos.", 1200,'https://www.mariage.com/wp-content/uploads/2016/02/une-mariage-romantique.jpg');
 
 INSERT into packages (hall_id,flowers_id,cakes_id,music_id, name , description,price,image_url) VALUES (4,4,4,4, "Premium", "All-inclusive wedding with memorable on-site photo session and upgrades for newlyweds.", 9000,'https://dammfinefood.img-us3.com/VickiChin/long-way-home_jen-phuong-260.jpg');
 INSERT into packages (hall_id,flowers_id,cakes_id,music_id, name , description,price,image_url) VALUES (5,5,5,5,"Classic","elicate white florals, plenty of lush greenery, light linens, and minimal decor: These tried and true wedding details will never go out of style. And if you're a bride who prefers timelessness over trends, we suggest planning your ceremony and reception in a classic wedding style.",1300,"https://vinesoftheyarravalley.com.au/wp-content/uploads/2020/06/bride-and-groom-1024x683.jpg");

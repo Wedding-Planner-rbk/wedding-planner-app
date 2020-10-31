@@ -40,12 +40,12 @@ class Profile extends React.Component {
              <h1> Check my selected products </h1>
               <div className="container">
                       <div className="row">
-                          {/* {this.state.products.map((product, index) => 
+                          {this.state.products.map((product, index) => 
                               <div key={index} className="col-sm">
                               <img src={product.imageUrl} className="img-thumbnail previewImage" />
                               <h4>Type: {product.name}</h4>
                               <span>Price: {product.price} DT</span>
-                          </div>)} */}
+                          </div>)}
                       </div>
                       <button className="btn btn-primary"> confirm my booking  </button>
                       </div>
