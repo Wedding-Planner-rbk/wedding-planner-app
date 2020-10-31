@@ -7,8 +7,9 @@ class AboutUs extends React.Component {
     render(){
       //  style :{{ backgroundImage:`url(https://image.shutterstock.com/image-photo/vintage-crown-over-dark-royal-260nw-1653121378.jpg)`}}
         return (
+          
             <div className='container'>
-            <div >
+            <div ><div className='espace'> </div>
             <h4> Who we are </h4>
             <h6>The wedding planner online that'll do anything for love.</h6>
             <p>The Velvet Box is the largest and most trusted marketplace in Tunisia connecting engaged couples with local wedding professionals. Millions of couples are able to search, compare and book from a directory of multipls vendors .  </p>

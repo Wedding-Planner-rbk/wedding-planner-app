@@ -17,6 +17,7 @@ class LogIn extends React.Component {
   }
   componentDidMount(){
     $.get("/users").then((results)=>{
+      // console.log(results)
       this.setState({
         users:results,
         username: "",
@@ -46,26 +47,57 @@ class LogIn extends React.Component {
     } 
   }
   render() {
+   
+    const formContact={
+      display:'flex',
+      justifyContent:'center'
+    }
+    const inputContact={
+      width:"400px",
+      display: "flex",
+      justifySelf: "center"
+    }
+    const formMain={
+      width: "600px",
+      heigth:"200px",
+      border: "2px solid #7952B3",
+      padding: "60px",
+      margin:'50px',
+      
+    }
+
     if(this.state.pass === ""){
       return (
-        <div className=" LoginForm ">
-          <form onSubmit={(e)=>this.check(e)}>
+        <div className='container'  > 
+
+        <div className=" LoginForm " >
+           <div style ={{padding: '20px', marginLeft: '255px'}}> 
+              <h1> Login Form </h1> 
+           </div>
+                 
+          <form onSubmit={(e)=>this.check(e)} style={formMain} >
+
+            <label>Username</label><br></br>
             <input
+              style={inputContact}
               type="text"
               name="name"
               placeholder="UserName "
               onChange={(e)=>{this.setState({username:e.target.value})}}
             /><br></br>
           
+            <label> Password</label><br></br>
             <input
+              style={inputContact}
               type="password"
               name="password"
               placeholder="password "
               onChange={(e)=>{this.setState({password:e.target.value})}}
             /><br></br>
-  
-            <input type="submit" value="LogIn" onClick ={() => this.props.setCurrentUser(this.state.currentUser)} /><br></br>
+             <br></br>
+            <input className="btn btn-outline-secondary" type="submit" value="LogIn" onClick ={() => this.props.setCurrentUser(this.state.currentUser)} /><br></br>
           </form>
+        </div>
         </div>
       )
     }else if(this.state.pass === "signup"){

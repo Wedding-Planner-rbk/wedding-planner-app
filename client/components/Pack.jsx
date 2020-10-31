@@ -23,19 +23,25 @@ class Pack extends React.Component {
     render() {
    
         return (
-        <div>
-            <h1>pack</h1>
-               description
+        <div className= "description">
+            <div className='espace'> </div>
+             <h1> {this.props.pack.name} </h1>
+            <span> {this.props.pack.description}</span>
+         
             <div className="container">
                     <div className="row">
+                    <h6>In this package you can find :</h6>
                         {this.state.products.map((product, index) => 
-                            <div key={index} className="col-sm">
+                    <div key={index} className="card" style={{width: "16.5rem"}}>    
+                            <div className="col-sm">
+                            
                             <img src={product.imageUrl} className="img-thumbnail previewImage" />
                             <h4>Type: {product.name}</h4>
                             <span>Price: {product.price} DT</span>
+                           </div> 
                         </div>)}
                     </div>
-                    <button> reserve </button>
+                    <button className="btn btn-primary" style={{ heigth :'50px' ,width:'200px', margin:'20px',marginLeft:'225px'}} > Book Now  </button>
                     </div>
 
           </div>

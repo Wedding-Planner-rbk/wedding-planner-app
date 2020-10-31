@@ -14,8 +14,9 @@ class Packages extends React.Component {
   render() {
     return (
     
-      <div className="container" >
-        <div className="row" >
+      <div>
+        <div className="description" >
+        <div className='espace'> </div>
         <h1> Our Packages</h1>
         <span> Struggling to decide on a style for your wedding? We’ve compiled a list of the eight categories that most weddings will fit into </span>
         <ul>

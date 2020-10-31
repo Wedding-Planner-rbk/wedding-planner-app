@@ -29,10 +29,10 @@ class Hall extends Component {
                 <div >
                     {this.state.weddingHalls.map(hall => (
                         <div key={hall.id} className='row justify-content-start'>
-                            <div  className="col-md-2">
+                            <div  className="col-md-3">
                                 <img src={hall.imageUrl} className="img-thumbnail previewImage"/>
                             </div>
-                            <div className="col-md-10 p-4 pl-md-0">
+                            <div className="col-md-8 p-4 pl-md-0">
                                 <h3 className="mt-0">{hall.name}</h3>
                                 <p>{hall.description}</p>
                                 <p>Price : {hall.price} DT</p>

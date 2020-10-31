@@ -32,8 +32,8 @@ class Products extends React.Component {
     
     render() { 
         return (
-            <div>
-                <h2>The Velvet Box Products & Services </h2>
+            <div className="description">
+                <h1>The Velvet Box Products & Services </h1>
                 {this.state.products.length ? <div>
                 <p>The professionals at The Velvet Box are experts at creating the ultimate wedding. 
                 We offer you the better choice with our products like Flowers , Wedding halls , Music bands and Wedding Cakes..  </p>
